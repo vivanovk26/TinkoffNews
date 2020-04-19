@@ -1,0 +1,26 @@
+buildscript {
+    final def buildToolsVersion = "3.6.3"
+    final def kotlinVersion = "1.4-M1-release-101"
+
+    repositories {
+        maven { url "http://kotlin.bintray.com/kotlin-dev" }
+        jcenter()
+        google()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$buildToolsVersion"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

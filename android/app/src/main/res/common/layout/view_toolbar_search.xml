@@ -1,0 +1,92 @@
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar"
+    style="@style/Toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?actionBarSize"
+    android:contentInsetStart="0dp"
+    android:contentInsetLeft="0dp"
+    android:contentInsetEnd="0dp"
+    android:contentInsetRight="0dp"
+    app:contentInsetEnd="0dp"
+    app:contentInsetLeft="0dp"
+    app:contentInsetRight="0dp"
+    app:contentInsetStart="0dp">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <com.google.android.material.circularreveal.CircularRevealFrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_toolbar_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/toolbar_search_spacing"
+                android:background="@drawable/bg_search"
+                android:orientation="horizontal"
+                android:padding="@dimen/toolbar_search_spacing"
+                android:visibility="invisible">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/et_toolbar_search"
+                    style="@style/EditText.Search"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/toolbar_spacing"
+                    android:layout_weight="1"
+                    android:freezesText="true" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/imb_toolbar_back"
+                    style="@style/ImageButton"
+                    android:layout_width="@dimen/icon"
+                    android:layout_height="@dimen/icon"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_back" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/imb_toolbar_close"
+                    style="@style/ImageButton"
+                    android:layout_width="@dimen/icon"
+                    android:layout_height="@dimen/icon"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_close"
+                    android:visibility="invisible" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_toolbar_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/toolbar_spacing"
+                android:paddingEnd="@dimen/toolbar_spacing">
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/imb_toolbar_search"
+                    style="@style/ToolbarImageButton"
+                    android:layout_width="@dimen/icon"
+                    android:layout_height="@dimen/icon"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_search" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_toolbar_title"
+                    style="@style/ToolbarTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    tools:text="@string/articles_toolbar_title" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </com.google.android.material.circularreveal.CircularRevealFrameLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.Toolbar>

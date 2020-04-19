@@ -1,0 +1,9 @@
+<resources>
+
+    <!-- Bookmarks -->
+    <string name="bookmarks_toolbar_title">Bookmarks</string>
+    <string name="bookmarks_search">Bookmarks search</string>
+    <string name="bookmarks_empty_state_title">No&#160;bookmarks&#160;yet</string>
+    <string name="bookmarks_empty_state_description">Add articles as bookmarks to&#160;read them
+        later</string>
+</resources>

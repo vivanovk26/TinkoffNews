@@ -1,0 +1,24 @@
+<resources>
+
+    <string name="app_name">News API</string>
+
+    <!-- General -->
+    <string name="none" />
+    <string name="b_dismiss">Dismiss</string>
+    <string name="b_ok">OK</string>
+    <string name="b_settings">Settings</string>
+
+    <!-- Empty view -->
+    <string name="search_empty_state_title">Nothing found for \“%s\”</string>
+    <string name="search_empty_state_description">Try to&#160;type something else</string>
+
+    <!-- Date -->
+    <string name="today_format">Today %s</string>
+    <string name="yesterday_format">Yesterday %s</string>
+
+    <!-- Errors -->
+    <string name="error">Error</string>
+    <string name="error_connection">Connection error</string>
+    <string name="error_invalid_server_data">Wrong data format</string>
+    <string name="error_unexpected">Unexpected error</string>
+</resources>

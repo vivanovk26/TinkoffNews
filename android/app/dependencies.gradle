@@ -1,0 +1,37 @@
+dependencies {
+    final def corbindVersion = "1.3.1"
+    final def coroutinesVersion = "1.3.5-2-native-mt-1.4-M1"
+    final def frescoVersion = "1.11.0"
+    final def kotlinVersion = "1.4-M1"
+    final def ktxVersion = "1.2.0"
+    final def materialVersion = "1.2.0-alpha06"
+    final def okhttpVersion = "3.11.0"
+    final def shimmerVersion = "0.5.0"
+    final def timberVersion = "4.7.1"
+
+    implementation project(":common")
+
+    // Corbind
+    implementation "ru.ldralighieri.corbind:corbind-core:$corbindVersion"
+
+    // Google
+    // Do not use alpha09
+    implementation "com.google.android.material:material:$materialVersion"
+
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+    implementation "androidx.core:core-ktx:$ktxVersion"
+
+    // OkHttp
+    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+
+    // Shimmer
+    implementation "com.facebook.shimmer:shimmer:$shimmerVersion"
+
+    // Utils
+    implementation "com.facebook.fresco:fresco:$frescoVersion"
+    implementation "com.facebook.fresco:imagepipeline-okhttp3:$frescoVersion"
+    implementation "com.jakewharton.timber:timber:$timberVersion"
+}

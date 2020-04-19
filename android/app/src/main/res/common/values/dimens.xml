@@ -1,0 +1,63 @@
+<resources>
+
+    <!-- Sizes -->
+    <dimen name="dp1">1dp</dimen>
+    <dimen name="dp2">2dp</dimen>
+    <dimen name="dp4">4dp</dimen>
+    <dimen name="dp8">8dp</dimen>
+    <dimen name="dp12">12dp</dimen>
+    <dimen name="dp16">16dp</dimen>
+    <dimen name="dp24">24dp</dimen>
+    <dimen name="dp56">56dp</dimen>
+    <dimen name="dp64">64dp</dimen>
+    <dimen name="dp200">200dp</dimen>
+    <dimen name="dp256">256dp</dimen>
+
+    <dimen name="button_corner_radius">@dimen/dp1</dimen>
+    <dimen name="default_spacing">@dimen/dp16</dimen>
+
+    <dimen name="icon">@dimen/dp24</dimen>
+    <dimen name="search_corner">@dimen/dp2</dimen>
+    <dimen name="toolbar_spacing">@dimen/dp16</dimen>
+    <dimen name="toolbar_search_spacing">@dimen/dp8</dimen>
+
+    <!-- Texts -->
+    <dimen name="sp10">10sp</dimen>
+    <dimen name="sp14">14sp</dimen>
+    <dimen name="sp16">16sp</dimen>
+    <dimen name="sp18">18sp</dimen>
+    <dimen name="sp20">20sp</dimen>
+    <dimen name="sp24">24sp</dimen>
+
+    <dimen name="button_text">@dimen/sp18</dimen>
+    <dimen name="edit_text">@dimen/sp18</dimen>
+    <dimen name="toolbar_title">@dimen/sp20</dimen>
+    <dimen name="toolbar_action">@dimen/sp16</dimen>
+
+    <!-- Empty states -->
+    <dimen name="empty_view_width">@dimen/dp256</dimen>
+    <dimen name="empty_image">@dimen/dp64</dimen>
+    <dimen name="empty_title_text">@dimen/sp20</dimen>
+    <dimen name="empty_description_text">@dimen/sp16</dimen>
+    <dimen name="empty_description_spacing">@dimen/dp4</dimen>
+    <dimen name="empty_title_spacing">@dimen/dp16</dimen>
+
+    <!-- Bottom navigation items -->
+    <dimen name="bottom_navigation_height">@dimen/dp56</dimen>
+    <dimen name="bottom_text">@dimen/sp10</dimen>
+
+    <!--- Article item -->
+    <dimen name="article_item_photo_height">@dimen/dp200</dimen>
+    <dimen name="article_item_text_padding">@dimen/dp16</dimen>
+    <dimen name="article_item_title_text">@dimen/sp20</dimen>
+    <dimen name="article_item_title_spacing">@dimen/dp8</dimen>
+    <dimen name="article_item_description_text">@dimen/sp16</dimen>
+    <dimen name="article_item_date_text">@dimen/sp14</dimen>
+
+    <!-- Article -->
+    <dimen name="article_content_spacing">@dimen/dp16</dimen>
+    <dimen name="article_date_text">@dimen/sp14</dimen>
+    <dimen name="article_date_spacing">@dimen/dp12</dimen>
+    <dimen name="article_description_text">@dimen/sp16</dimen>
+    <dimen name="article_title_text">@dimen/sp24</dimen>
+</resources>

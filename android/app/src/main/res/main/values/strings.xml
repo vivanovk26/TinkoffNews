@@ -1,0 +1,6 @@
+<resources>
+
+    <!-- Main -->
+    <string name="bottom_navigation_articles">News</string>
+    <string name="bottom_navigation_bookmarks">Bookmarks</string>
+</resources>

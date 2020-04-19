@@ -1,0 +1,13 @@
+<resources>
+
+    <!-- Articles -->
+    <string name="articles_toolbar_title">News</string>
+    <string name="articles_search">Search</string>
+    <string name="articles_empty_state_title">No&#160;news&#160;yet</string>
+    <string name="articles_empty_state_description">News will be&#160;displayed here</string>
+
+    <string name="articles_list_error_title">Error</string>
+    <string name="articles_list_error_description">During news loading</string>
+    <string name="articles_list_error_description_search">During \“%s\” search</string>
+    <string name="articles_list_error_retry">Retry</string>
+</resources>

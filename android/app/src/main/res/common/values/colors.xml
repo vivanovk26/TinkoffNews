@@ -1,0 +1,49 @@
+<resources>
+
+    <color name="fresco_placeholder_bg">#999999</color>
+    <color name="fresco_error_bg">#777aaa</color>
+
+    <color name="black">#000000</color>
+    <color name="cool_gray">#bababb</color>
+    <color name="charcoal_gray">#47484a</color>
+    <color name="cerulean">#0086bb</color>
+    <color name="gray1">#a9a9ab</color>
+    <color name="gray2">#515255</color>
+    <color name="gray3">#393a3b</color>
+    <color name="green">#bed600</color>
+    <color name="green_disabled">#dfeb80</color>
+    <color name="gunmental">#535457</color>
+    <color name="light_khaki">#eff5c0</color>
+    <color name="transparent">#00000000</color>
+    <color name="transparent_gray">#4db3b3b3</color>
+    <color name="yellow">#f7a800</color>
+    <color name="white">#ffffff</color>
+    <color name="white_40">#66ffffff</color>
+
+    <!-- Views -->
+    <color name="background">@color/charcoal_gray</color>
+    <color name="button_text">@color/white</color>
+    <color name="button_text_disabled">@color/light_khaki</color>
+    <color name="divider">@color/gray3</color>
+    <color name="edit_text">@color/white</color>
+    <color name="edit_text_hint">@color/charcoal_gray</color>
+    <color name="edit_text_search">@color/black</color>
+    <color name="ic_launcher_background">@color/green</color>
+    <color name="toolbar_action_text">@color/white</color>
+    <color name="toolbar_background">@color/gunmental</color>
+    <color name="toolbar_title_text">@color/white</color>
+
+    <!-- Main -->
+    <color name="bottom_item_background">@color/gunmental</color>
+    <color name="bottom_item_enabled">@color/white</color>
+    <color name="bottom_item_disabled">@color/cool_gray</color>
+
+    <!-- Article item -->
+    <color name="article_item_image_overlay">@color/transparent_gray</color>
+    <color name="article_item_title_description_text">@color/white</color>
+    <color name="article_item_date_text">@color/white_40</color>
+
+    <!-- Article -->
+    <color name="article_date_text">@color/gray1</color>
+    <color name="article_title_description_text">@color/gray2</color>
+</resources>

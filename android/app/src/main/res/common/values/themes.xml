@@ -1,0 +1,17 @@
+<resources>
+
+    <style name="TinkoffNewsTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Status bar color -->
+        <item name="colorPrimaryDark">@color/gunmental</item>
+        <!-- Accent on CheckBoxes, EditTexts, etc. -->
+        <item name="colorAccent">@color/green</item>
+
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+
+    <style name="TinkoffNewsTheme.Launcher">
+        <item name="android:windowBackground">@drawable/launch_screen</item>
+    </style>
+</resources>
