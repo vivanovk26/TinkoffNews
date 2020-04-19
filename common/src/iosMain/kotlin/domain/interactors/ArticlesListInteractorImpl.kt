@@ -1,7 +1,9 @@
 package domain.interactors
 
 import data.repository.ArticlesRepository
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 
 /**
  * @author Vladimir Ivanov
@@ -12,22 +14,12 @@ internal class ArticlesListInteractorImpl(
 
     override fun getArticles(interactorListener: InteractorListener) {
         launch {
-            print("Start: $coroutineContext")
             interactorListener.onStart()
             try {
-                val result = withContext(Dispatchers.Default) {
-                    println("Success before: $coroutineContext")
-                    delay(5000L)
-                    println("Success after: $coroutineContext")
-
-                    articlesRepository.getArticles()
-                }
-                interactorListener.onSuccess(result)
+                interactorListener.onSuccess(articlesRepository.getArticles())
             } catch (throwable: Throwable) {
-                println("Error: $throwable")
                 interactorListener.onError(throwable)
             } finally {
-                println("Completed: $coroutineContext")
                 interactorListener.onCompletion()
             }
         }
