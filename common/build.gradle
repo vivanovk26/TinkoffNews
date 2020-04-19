@@ -21,9 +21,6 @@ kotlin {
     }
 
     sourceSets {
-        final def coroutinesVersion = "1.3.5-2-native-mt-1.4-M1"
-        final def ktorVersion = "1.3.2-1.4-M1-2"
-        final def serializationVersion = "0.20.0-1.4-M1"
 
         commonMain {
             kotlin.srcDir("src/commonMain/kotlin")
@@ -32,14 +29,14 @@ kotlin {
 
                 // Kotlin
                 implementation "org.jetbrains.kotlin:kotlin-stdlib-common"
-                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$coroutinesVersion"
-                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$serializationVersion"
+                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-common:${rootProject.ext.coroutinesVersion}"
+                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$rootProject.ext.serializationVersion"
 
                 // Ktor
-                implementation "io.ktor:ktor-client-core:$ktorVersion"
-                implementation "io.ktor:ktor-client-json:$ktorVersion"
-                implementation "io.ktor:ktor-client-logging:$ktorVersion"
-                implementation "io.ktor:ktor-client-serialization:$ktorVersion"
+                implementation "io.ktor:ktor-client-core:${rootProject.ext.ktorVersion}"
+                implementation "io.ktor:ktor-client-json:${rootProject.ext.ktorVersion}"
+                implementation "io.ktor:ktor-client-logging:${rootProject.ext.ktorVersion}"
+                implementation "io.ktor:ktor-client-serialization:${rootProject.ext.ktorVersion}"
             }
         }
 
@@ -50,14 +47,14 @@ kotlin {
 
                 // Kotlin
                 implementation "org.jetbrains.kotlin:kotlin-stdlib"
-                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
-                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$serializationVersion"
+                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${rootProject.ext.coroutinesVersion}"
+                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:${rootProject.ext.serializationVersion}"
 
                 // Ktor
-                implementation "io.ktor:ktor-client-okhttp:$ktorVersion"
-                implementation "io.ktor:ktor-client-json-jvm:$ktorVersion"
-                implementation "io.ktor:ktor-client-logging-jvm:$ktorVersion"
-                implementation "io.ktor:ktor-client-serialization-jvm:$ktorVersion"
+                implementation "io.ktor:ktor-client-okhttp:${rootProject.ext.ktorVersion}"
+                implementation "io.ktor:ktor-client-json-jvm:${rootProject.ext.ktorVersion}"
+                implementation "io.ktor:ktor-client-logging-jvm:${rootProject.ext.ktorVersion}"
+                implementation "io.ktor:ktor-client-serialization-jvm:${rootProject.ext.ktorVersion}"
             }
         }
 
@@ -68,14 +65,14 @@ kotlin {
 
                 // Kotlin
                 implementation "org.jetbrains.kotlin:kotlin-stdlib"
-                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:$coroutinesVersion"
-                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:$serializationVersion"
+                implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core-native:${rootProject.ext.coroutinesVersion}"
+                implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:${rootProject.ext.serializationVersion}"
 
                 // Ktor
-                implementation "io.ktor:ktor-client-ios:$ktorVersion"
-                implementation "io.ktor:ktor-client-json-native:$ktorVersion"
-                implementation "io.ktor:ktor-client-logging-native:$ktorVersion"
-                implementation "io.ktor:ktor-client-serialization-native:$ktorVersion"
+                implementation "io.ktor:ktor-client-ios:${rootProject.ext.ktorVersion}"
+                implementation "io.ktor:ktor-client-json-native:${rootProject.ext.ktorVersion}"
+                implementation "io.ktor:ktor-client-logging-native:${rootProject.ext.ktorVersion}"
+                implementation "io.ktor:ktor-client-serialization-native:${rootProject.ext.ktorVersion}"
             }
         }
     }
