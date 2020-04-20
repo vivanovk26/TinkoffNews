@@ -1,10 +1,10 @@
 package com.vivanov.tinkoffnews.presentation
 
+import com.vivanov.tinkoffnews.common.di.CommonDependenciesProvider
 import com.vivanov.tinkoffnews.di.DependenciesProvider
 import com.vivanov.tinkoffnews.di.DependenciesProviderImpl
 import com.vivanov.tinkoffnews.presentation.presenters.MainPresenter
 import com.vivanov.tinkoffnews.presentation.presenters.Presenter
-import di.CommonDependenciesProvider
 import kotlin.reflect.KClass
 
 /**

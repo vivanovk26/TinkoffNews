@@ -1,6 +1,6 @@
 package com.vivanov.tinkoffnews.presentation.states
 
-import domain.model.Article
+import com.vivanov.tinkoffnews.common.domain.model.Article
 
 /**
  * @author Vladimir Ivanov

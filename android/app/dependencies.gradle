@@ -15,7 +15,6 @@ dependencies {
     implementation "ru.ldralighieri.corbind:corbind-core:$corbindVersion"
 
     // Google
-    // Do not use alpha09
     implementation "com.google.android.material:material:$materialVersion"
 
     // Kotlin

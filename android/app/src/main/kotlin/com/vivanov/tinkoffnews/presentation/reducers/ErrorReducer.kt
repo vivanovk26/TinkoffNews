@@ -1,10 +1,10 @@
 package com.vivanov.tinkoffnews.presentation.reducers
 
-import com.vivanov.tinkoffnews.presentation.actions.ErrorAction
-import com.vivanov.tinkoffnews.presentation.actions.LoadingAction
+import com.vivanov.tinkoffnews.common.domain.actions.Action
+import com.vivanov.tinkoffnews.common.domain.actions.ErrorAction
+import com.vivanov.tinkoffnews.common.domain.actions.LoadingAction
 import com.vivanov.tinkoffnews.presentation.states.ErrorState
 import com.vivanov.tinkoffnews.presentation.states.ErrorStateImpl
-import domain.actions.Action
 
 /**
  * @author Vladimir Ivanov

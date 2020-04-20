@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.vivanov.tinkoffnews.R
-import domain.model.Article
+import com.vivanov.tinkoffnews.common.domain.model.Article
 import kotlinx.android.synthetic.main.item_article.view.*
 
 /**

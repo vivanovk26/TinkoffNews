@@ -1,13 +1,13 @@
 package com.vivanov.tinkoffnews.presentation.presenters
 
+import com.vivanov.tinkoffnews.common.domain.actions.Action
+import com.vivanov.tinkoffnews.common.domain.actions.ActionListener
+import com.vivanov.tinkoffnews.common.domain.interactors.ArticlesListInteractor
 import com.vivanov.tinkoffnews.presentation.reducers.ArticlesListReducer
 import com.vivanov.tinkoffnews.presentation.reducers.EmptyReducer
 import com.vivanov.tinkoffnews.presentation.reducers.ErrorReducer
 import com.vivanov.tinkoffnews.presentation.reducers.LoadingReducer
 import com.vivanov.tinkoffnews.presentation.states.MainState
-import domain.actions.Action
-import domain.actions.ActionListener
-import domain.interactors.ArticlesListInteractor
 
 /**
  * @author Vladimir Ivanov

@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.vivanov.tinkoffnews.common.domain.model.Article
 import com.vivanov.tinkoffnews.presentation.states.ListState
 import com.vivanov.tinkoffnews.presentation.views.list.ArticlesListAdapter
-import domain.model.Article
 
 /**
  * @author Vladimir Ivanov

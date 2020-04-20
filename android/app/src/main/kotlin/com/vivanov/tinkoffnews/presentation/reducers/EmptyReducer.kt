@@ -1,12 +1,12 @@
 package com.vivanov.tinkoffnews.presentation.reducers
 
 import com.vivanov.tinkoffnews.R
+import com.vivanov.tinkoffnews.common.domain.actions.Action
+import com.vivanov.tinkoffnews.common.domain.actions.ListAction
 import com.vivanov.tinkoffnews.data.providers.ResourceProvider
-import com.vivanov.tinkoffnews.presentation.actions.ListAction
 import com.vivanov.tinkoffnews.presentation.model.EmptyData
 import com.vivanov.tinkoffnews.presentation.states.EmptyState
 import com.vivanov.tinkoffnews.presentation.states.EmptyStateImpl
-import domain.actions.Action
 
 /**
  * @author Vladimir Ivanov

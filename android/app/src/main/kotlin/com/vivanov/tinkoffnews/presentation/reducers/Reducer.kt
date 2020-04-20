@@ -1,7 +1,7 @@
 package com.vivanov.tinkoffnews.presentation.reducers
 
+import com.vivanov.tinkoffnews.common.domain.actions.Action
 import com.vivanov.tinkoffnews.presentation.states.State
-import domain.actions.Action
 
 /**
  * @author Vladimir Ivanov
