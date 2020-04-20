@@ -1,9 +1,9 @@
 package com.vivanov.tinkoffnews.presentation.reducers
 
-import com.vivanov.tinkoffnews.presentation.actions.Action
 import com.vivanov.tinkoffnews.presentation.actions.ListAction
 import com.vivanov.tinkoffnews.presentation.states.ListState
 import com.vivanov.tinkoffnews.presentation.states.ListStateImpl
+import domain.actions.Action
 import java.io.Serializable
 
 /**

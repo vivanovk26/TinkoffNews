@@ -1,6 +1,4 @@
-package com.vivanov.tinkoffnews.presentation.actions
-
-import domain.actions.Action
+package domain.actions
 
 /**
  * @author Vladimir Ivanov

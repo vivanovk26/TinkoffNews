@@ -1,5 +1,6 @@
 package com.vivanov.tinkoffnews.presentation.actions
 
+import domain.actions.Action
 import java.io.Serializable
 
 /**

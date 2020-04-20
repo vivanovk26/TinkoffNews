@@ -4,13 +4,13 @@ import android.os.Bundle
 import androidx.lifecycle.MutableLiveData
 import com.vivanov.tinkoffnews.presentation.states.State
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 
 /**
  * @author Vladimir Ivanov
  */
-internal abstract class BasePresenter<T : State> : Presenter<T>, CoroutineScope by CoroutineScope(Dispatchers.Main) {
+internal abstract class BasePresenter<T : State> : Presenter<T>, CoroutineScope by MainScope() {
 
     override val stateLiveData: MutableLiveData<T> = MutableLiveData()
 

@@ -5,6 +5,7 @@ import com.facebook.cache.disk.DiskCacheConfig
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.imagepipeline.backends.okhttp3.OkHttpImagePipelineConfigFactory
 import com.vivanov.tinkoffnews.data.OkHttpClientProvider
+import com.vivanov.tinkoffnews.di.DependenciesProvider
 import com.vivanov.tinkoffnews.di.DependenciesProviderImpl
 
 /**
@@ -12,10 +13,12 @@ import com.vivanov.tinkoffnews.di.DependenciesProviderImpl
  */
 class TinkoffNewsApp : Application() {
 
+    private val dependenciesProvider: DependenciesProvider by lazy { DependenciesProviderImpl }
+
     override fun onCreate() {
         super.onCreate()
 
-        DependenciesProviderImpl.setup(this)
+        dependenciesProvider.setup(this)
         setupFresco()
     }
 
