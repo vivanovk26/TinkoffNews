@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 internal class ArticleEntity(
-    val id: String? = null,
+    val id: Int? = null,
     val name: String? = null,
     val text: String? = null,
     val publicationDate: PublicationDateEntity? = null

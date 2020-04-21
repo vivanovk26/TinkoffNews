@@ -19,7 +19,7 @@ internal class ApiMapperImpl : ApiMapper {
     }
 
     private fun isArticleEntityValid(articleEntity: ArticleEntity): Boolean {
-        return !articleEntity.id.isNullOrBlank() &&
+        return articleEntity.id != null &&
                 !articleEntity.name.isNullOrBlank() &&
                 !articleEntity.text.isNullOrBlank() &&
                 articleEntity.publicationDate?.milliseconds != null
@@ -27,10 +27,12 @@ internal class ApiMapperImpl : ApiMapper {
 
     private fun mapArticleEntity(articleEntity: ArticleEntity?): Article {
         return articleEntity?.let { entity ->
+            val id = entity.id.requireNotNull()
             Article(
-                id = entity.id.requireNotNullOrNotEmptyString(),
+                id = id,
                 name = entity.name.requireNotNullOrNotEmptyString(),
                 text = entity.text.requireNotNullOrNotEmptyString(),
+                imageUrl = "https://i.picsum.photos/id/${id.rem(1000)}/400/300.jpg", // Add some photo. Because API doesn't provide it.
                 publicationDate = entity.publicationDate?.milliseconds.requireNotNull()
             )
         } ?: throwParsingException(ArticleEntity::class)

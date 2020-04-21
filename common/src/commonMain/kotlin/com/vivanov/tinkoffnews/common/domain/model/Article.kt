@@ -4,8 +4,9 @@ package com.vivanov.tinkoffnews.common.domain.model
  * @author Vladimir Ivanov
  */
 expect class Article(
-    id: String,
+    id: Int,
     name: String,
     text: String,
+    imageUrl: String,
     publicationDate: Long
 )

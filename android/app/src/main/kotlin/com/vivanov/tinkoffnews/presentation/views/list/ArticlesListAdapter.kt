@@ -24,6 +24,7 @@ internal class ArticlesListAdapter : ListAdapter<Article, ArticlesListAdapter.Vi
         val article = getItem(position)
         itemView.titleTextView.text = article.name
         itemView.descriptionTextView.text = article.text
+        itemView.sdrv.setImageURI(article.imageUrl)
     }
 
     class ViewHolder(
