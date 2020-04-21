@@ -1,4 +1,4 @@
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/gray1"
@@ -8,30 +8,32 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/article_item_photo_height">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:orientation="vertical"
             android:padding="@dimen/default_spacing">
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <TextView
                 style="@style/ArticleItem.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/article_item_title_spacing"
                 android:background="@color/gray2" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </LinearLayout>
+
     </FrameLayout>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/gray2"
         android:orientation="vertical"
         android:padding="@dimen/article_item_text_padding">
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <TextView
             style="@style/ArticleItem.Description"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -40,25 +42,28 @@
             android:background="@color/gray1"
             android:gravity="center_vertical" />
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                style="@style/ImageButton"
-                android:layout_width="@dimen/icon"
-                android:layout_height="@dimen/icon"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_bookmark_disabled" />
-
-            <androidx.appcompat.widget.AppCompatTextView
+            <TextView
                 style="@style/ArticleItem.Date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:background="@color/gray1" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-    </androidx.appcompat.widget.LinearLayoutCompat>
-</androidx.appcompat.widget.LinearLayoutCompat>
+
+            <ImageButton
+                style="@style/ImageButton"
+                android:layout_width="@dimen/icon"
+                android:layout_height="@dimen/icon"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_bookmark_disabled" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

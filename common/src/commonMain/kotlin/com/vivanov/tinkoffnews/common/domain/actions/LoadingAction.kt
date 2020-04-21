@@ -4,10 +4,11 @@ package com.vivanov.tinkoffnews.common.domain.actions
  * @author Vladimir Ivanov
  */
 sealed class LoadingAction(
+    val viewKey: String,
     val loading: Boolean
 ) : Action {
 
-    object Show : LoadingAction(true)
+    class Show(viewKey: String) : LoadingAction(viewKey, true)
 
-    object Hide : LoadingAction(false)
+    class Hide(viewKey: String) : LoadingAction(viewKey, false)
 }

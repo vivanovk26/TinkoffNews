@@ -1,9 +1,12 @@
 package com.vivanov.tinkoffnews.presentation.views
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.annotation.LayoutRes
-import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.Observer
 import com.vivanov.tinkoffnews.presentation.MVPManager
 import com.vivanov.tinkoffnews.presentation.delegates.ViewDelegate
@@ -13,15 +16,20 @@ import com.vivanov.tinkoffnews.presentation.states.State
 /**
  * @author Vladimir Ivanov
  */
-internal abstract class BaseActivity<T : Presenter<K>, K : State> : AppCompatActivity() {
+internal abstract class BaseActivity<T : Presenter<K>, K : State> : Activity(), LifecycleOwner {
 
     protected abstract val presenter: T
+    private val lifecycleRegistry: LifecycleRegistry by lazy { LifecycleRegistry(this) }
     private val viewDelegates: List<ViewDelegate<in K>> by lazy { createViewDelegates() }
 
     protected open fun createViewDelegates(): List<ViewDelegate<in K>> = emptyList()
 
     @LayoutRes
     protected abstract fun getLayoutRes(): Int
+
+    override fun getLifecycle(): Lifecycle {
+        return lifecycleRegistry
+    }
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
@@ -33,6 +41,7 @@ internal abstract class BaseActivity<T : Presenter<K>, K : State> : AppCompatAct
         super.onCreate(savedInstanceState)
 
         setContentView(getLayoutRes())
+        lifecycleRegistry.markState(Lifecycle.State.CREATED)
         viewDelegates.forEach { viewDelegate -> viewDelegate.onCreate(savedInstanceState) }
         presenter.onViewAttached(savedInstanceState)
         presenter.stateLiveData.observe(this, Observer { state ->
@@ -43,6 +52,7 @@ internal abstract class BaseActivity<T : Presenter<K>, K : State> : AppCompatAct
     override fun onStart() {
         super.onStart()
 
+        lifecycleRegistry.markState(Lifecycle.State.STARTED)
         viewDelegates.forEach { viewDelegate -> viewDelegate.onStart() }
     }
 

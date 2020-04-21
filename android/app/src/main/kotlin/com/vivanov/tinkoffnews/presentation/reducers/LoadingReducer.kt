@@ -12,7 +12,9 @@ internal object LoadingReducer : Reducer<LoadingState> {
 
     override fun reduce(state: LoadingState, action: Action): LoadingState {
         if (action is LoadingAction) {
-            return LoadingStateImpl(action.loading)
+            val result = HashMap(state.loadingStateMap)
+            result[action.viewKey] = action.loading
+            return LoadingStateImpl(result)
         }
         return state
     }

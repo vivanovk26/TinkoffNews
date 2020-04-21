@@ -3,6 +3,8 @@ package com.vivanov.tinkoffnews.presentation.views
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
+import androidx.annotation.AttrRes
+import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
 import com.vivanov.tinkoffnews.R
 import com.vivanov.tinkoffnews.presentation.model.EmptyData
@@ -16,8 +18,11 @@ internal class EmptyView
 constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr) {
+    @AttrRes
+    defStyleAttr: Int = 0,
+    @StyleRes
+    defStyleRes: Int = 0
+) : FrameLayout(context, attrs, defStyleAttr, defStyleRes) {
 
     init {
         inflate(getContext(), R.layout.view_empty, this)

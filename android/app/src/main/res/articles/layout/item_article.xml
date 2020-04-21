@@ -1,4 +1,4 @@
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,13 +6,44 @@
     android:background="?android:attr/selectableItemBackground"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/article_item_photo_height">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/sdrv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/article_item_photo_height"
+            android:fitsSystemWindows="true"
+            fresco:actualImageScaleType="centerCrop"
+            fresco:overlayImage="@drawable/bg_article_image_overlay" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:padding="@dimen/default_spacing">
+
+            <TextView
+                android:id="@+id/titleTextView"
+                style="@style/ArticleItem.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/article_item_title_spacing"
+                tools:text="Breaking news" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="@dimen/article_item_text_padding">
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <TextView
             android:id="@+id/descriptionTextView"
             style="@style/ArticleItem.Description"
             android:layout_width="match_parent"
@@ -22,20 +53,12 @@
             android:gravity="center_vertical"
             tools:text="Breaking description" />
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/bookmarkImageButton"
-                style="@style/ImageButton"
-                android:layout_width="@dimen/icon"
-                android:layout_height="@dimen/icon"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_bookmark_disabled" />
-
-            <androidx.appcompat.widget.AppCompatTextView
+            <TextView
                 android:id="@+id/dateTextView"
                 style="@style/ArticleItem.Date"
                 android:layout_width="0dp"
@@ -43,35 +66,17 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 tools:text="9 June 2018" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-    </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <com.google.android.material.circularreveal.CircularRevealFrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/article_item_photo_height">
+            <ImageButton
+                android:id="@+id/bookmarkTextView"
+                style="@style/ImageButton"
+                android:layout_width="@dimen/icon"
+                android:layout_height="@dimen/icon"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_bookmark_disabled" />
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:orientation="vertical"
-            android:padding="@dimen/default_spacing">
+        </LinearLayout>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/titleTextView"
-                style="@style/ArticleItem.Title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/article_item_title_spacing"
-                tools:text="Breaking news" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
+    </LinearLayout>
 
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/sdrv"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/article_item_photo_height"
-            android:fitsSystemWindows="true"
-            fresco:actualImageScaleType="centerCrop"
-            fresco:overlayImage="@drawable/bg_article_image_overlay" />
-    </com.google.android.material.circularreveal.CircularRevealFrameLayout>
-</androidx.appcompat.widget.LinearLayoutCompat>
+</LinearLayout>

@@ -5,5 +5,5 @@ package com.vivanov.tinkoffnews.presentation.states
  */
 internal interface LoadingState : State {
 
-    val loading: Boolean
+    val loadingStateMap: Map<String, Boolean>
 }

@@ -1,0 +1,9 @@
+<resources>
+
+    <declare-styleable name="PlaceHolderView">
+
+        <attr name="layoutRes" format="reference" />
+
+    </declare-styleable>
+
+</resources>
