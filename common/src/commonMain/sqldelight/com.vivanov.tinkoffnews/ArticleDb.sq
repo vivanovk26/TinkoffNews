@@ -1,0 +1,22 @@
+CREATE TABLE ArticleDb (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    text TEXT NOT NULL,
+    imageUrl TEXT NOT NULL,
+    publicationDate INTEGER NOT NULL
+);
+
+getAllIds:
+SELECT id
+FROM ArticleDb;
+
+getAll:
+SELECT *
+FROM ArticleDb;
+
+insert:
+INSERT OR FAIL INTO ArticleDb(id, name, text, imageUrl, publicationDate)
+VALUES ?;
+
+delete:
+DELETE FROM ArticleDb WHERE id = ?;

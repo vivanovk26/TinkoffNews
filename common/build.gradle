@@ -1,3 +1,4 @@
+apply plugin: "com.squareup.sqldelight"
 apply plugin: "kotlin-multiplatform"
 apply plugin: "kotlinx-serialization"
 
@@ -8,8 +9,8 @@ kotlin {
     targets {
         jvm("android")
 
-        final def iosTarget = System.getenv('SDK_NAME')?.startsWith("iphoneos")  \
-                               ? presets.iosArm64 : presets.iosX64
+        final def iosTarget = System.getenv('SDK_NAME')?.startsWith("iphoneos")   \
+                                ? presets.iosArm64 : presets.iosX64
 
         fromPreset(iosTarget, "ios") {
             binaries {
@@ -37,6 +38,8 @@ kotlin {
                 implementation "io.ktor:ktor-client-json:${rootProject.ext.ktorVersion}"
                 implementation "io.ktor:ktor-client-logging:${rootProject.ext.ktorVersion}"
                 implementation "io.ktor:ktor-client-serialization:${rootProject.ext.ktorVersion}"
+
+                implementation "com.squareup.sqldelight:runtime:${rootProject.ext.sqldelightVersion}"
             }
         }
 
@@ -55,6 +58,8 @@ kotlin {
                 implementation "io.ktor:ktor-client-json-jvm:${rootProject.ext.ktorVersion}"
                 implementation "io.ktor:ktor-client-logging-jvm:${rootProject.ext.ktorVersion}"
                 implementation "io.ktor:ktor-client-serialization-jvm:${rootProject.ext.ktorVersion}"
+
+                implementation "com.squareup.sqldelight:android-driver:${rootProject.ext.sqldelightVersion}"
             }
         }
 
@@ -73,8 +78,18 @@ kotlin {
                 implementation "io.ktor:ktor-client-json-native:${rootProject.ext.ktorVersion}"
                 implementation "io.ktor:ktor-client-logging-native:${rootProject.ext.ktorVersion}"
                 implementation "io.ktor:ktor-client-serialization-native:${rootProject.ext.ktorVersion}"
+
+                // SQLDelight
+                implementation "com.squareup.sqldelight:native-driver:${rootProject.ext.sqldelightVersion}"
             }
         }
+    }
+}
+
+sqldelight {
+
+    Database {
+        packageName = "com.vivanov.tinkoffnews"
     }
 }
 

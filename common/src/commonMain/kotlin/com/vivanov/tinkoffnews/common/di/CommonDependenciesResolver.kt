@@ -1,5 +1,6 @@
 package com.vivanov.tinkoffnews.common.di
 
+import com.squareup.sqldelight.db.SqlDriver
 import com.vivanov.tinkoffnews.common.data.network.mappers.ApiMapper
 import com.vivanov.tinkoffnews.common.data.network.services.ApiService
 import com.vivanov.tinkoffnews.common.data.repository.ArticlesRepository
@@ -20,4 +21,6 @@ internal interface CommonDependenciesResolver {
     fun provideHttpClient(): HttpClient
 
     fun provideApiMapper(): ApiMapper
+
+    fun provideSqlDriver(): SqlDriver
 }

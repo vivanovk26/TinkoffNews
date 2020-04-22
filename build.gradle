@@ -1,7 +1,8 @@
 buildscript {
 
-    final def buildToolsVersion = "3.6.3"
-    final def kotlinVersion = "1.4-M1"
+    final def buildToolsPluginVersion = "3.6.3"
+    final def kotlinPluginVersion = "1.4-M1"
+    final def sqldelightPluginVersion = "1.3.0"
 
     repositories {
         maven { url "http://kotlin.bintray.com/kotlin-eap" }
@@ -15,9 +16,10 @@ buildscript {
     }
 
     dependencies {
-        classpath "com.android.tools.build:gradle:$buildToolsVersion"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlinVersion"
+        classpath "com.android.tools.build:gradle:$buildToolsPluginVersion"
+        classpath "com.squareup.sqldelight:gradle-plugin:${sqldelightPluginVersion}"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinPluginVersion"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlinPluginVersion"
     }
 }
 
@@ -43,6 +45,7 @@ ext {
     okhttpVersion = "3.11.0"
     recyclerViewVersion = "1.1.0"
     shimmerVersion = "0.5.0"
+    sqldelightVersion = "1.3.0"
     swipeRefreshLayoutVersion = "1.0.0"
     timberVersion = "4.7.1"
 
@@ -51,7 +54,7 @@ ext {
 
     // Common
     coroutinesVersion = "1.3.5-native-mt-1.4-M1"
-    kotlinVersion = "1.4-M1"
+    kotlinVersion = "1.3.71"
     ktorVersion = "1.3.2-1.4-M1"
     serializationVersion = "0.20.0-1.4-M1"
 }

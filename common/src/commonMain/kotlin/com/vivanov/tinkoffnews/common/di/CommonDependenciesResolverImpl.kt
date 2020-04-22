@@ -1,5 +1,6 @@
 package com.vivanov.tinkoffnews.common.di
 
+import com.squareup.sqldelight.db.SqlDriver
 import com.vivanov.tinkoffnews.common.data.network.http.NewsHttpClientFactory
 import com.vivanov.tinkoffnews.common.data.network.mappers.ApiMapper
 import com.vivanov.tinkoffnews.common.data.network.mappers.ApiMapperImpl
@@ -39,5 +40,9 @@ internal object CommonDependenciesResolverImpl : CommonDependenciesResolver {
 
     override fun provideApiMapper(): ApiMapper {
         return apiMapper
+    }
+
+    override fun provideSqlDriver(): SqlDriver {
+        TODO("Not yet implemented")
     }
 }
