@@ -10,7 +10,8 @@ internal data class MainState(
     val listState: ListState<Article> = ListStateImpl(emptyList()),
     val loadingState: LoadingState = LoadingStateImpl(
         mapOf(
-            LoadingKeys.INITIAL_KEY to false
+            LoadingKeys.INITIAL_KEY to false,
+            LoadingKeys.REFRESH_KEY to false
         )
     ),
     val emptyState: EmptyState = EmptyStateImpl(null),

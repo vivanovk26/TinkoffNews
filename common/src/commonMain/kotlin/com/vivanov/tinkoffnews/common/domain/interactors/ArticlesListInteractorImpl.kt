@@ -13,23 +13,31 @@ internal class ArticlesListInteractorImpl(
     private val articlesRepository: ArticlesRepository
 ) : ArticlesListInteractor {
 
-    override fun getArticles(actionListener: ActionListener) {
+    override fun loadArticles(actionListener: ActionListener) {
+        loadArticles(actionListener, LoadingKeys.INITIAL_KEY)
+    }
+
+    private fun loadArticles(actionListener: ActionListener, loadingKey: String) {
         flow {
-            delay(2000L)
+            delay(1000L)
             emit(ListAction(articlesRepository.getArticles()) as Action)
         }
             .onStart {
-                emit(LoadingAction.Show(LoadingKeys.INITIAL_KEY))
+                emit(LoadingAction.Show(loadingKey))
             }
             .catch { throwable ->
                 emit(ErrorAction(throwable))
             }
             .onCompletion {
-                emit(LoadingAction.Hide(LoadingKeys.INITIAL_KEY))
+                emit(LoadingAction.Hide(loadingKey))
             }
             .onEach { action ->
                 actionListener.onNextAction(action)
             }
             .launchIn(actionListener)
+    }
+
+    override fun refreshArticles(actionListener: ActionListener) {
+        loadArticles(actionListener, LoadingKeys.REFRESH_KEY)
     }
 }

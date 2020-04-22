@@ -21,7 +21,8 @@ internal class MainActivity : BaseActivity<MainPresenter, MainState>() {
             ListViewDelegate(recyclerView),
             LoadingViewDelegate(
                 mapOf(
-                    LoadingKeys.INITIAL_KEY to placeholderView
+                    LoadingKeys.INITIAL_KEY to placeholderView,
+                    LoadingKeys.REFRESH_KEY to swipeRefreshLayout
                 )
             ),
             EmptyViewDelegate(emptyView),
@@ -35,5 +36,13 @@ internal class MainActivity : BaseActivity<MainPresenter, MainState>() {
         setTheme(R.style.TinkoffNewsTheme)
 
         super.onCreate(savedInstanceState)
+
+        initUI()
+    }
+
+    private fun initUI() {
+        swipeRefreshLayout.setOnRefreshListener {
+            presenter.refresh()
+        }
     }
 }
