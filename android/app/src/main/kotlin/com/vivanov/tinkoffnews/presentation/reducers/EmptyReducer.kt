@@ -16,21 +16,16 @@ internal class EmptyReducer(
 ) : Reducer<EmptyState> {
 
     override fun reduce(state: EmptyState, action: Action): EmptyState {
-        return when (action) {
-            is ListAction<*> -> {
-                if (action.items.isEmpty()) {
-                    EmptyStateImpl(
-                        EmptyData(
-                            iconRes = R.drawable.ic_articles_list_empty_state,
-                            title = resourceProvider.getString(R.string.articles_empty_state_title),
-                            description = resourceProvider.getString(R.string.articles_empty_state_description)
-                        )
-                    )
-                } else {
-                    state
-                }
-            }
-            else -> state
+        return if (action is ListAction<*> && action.items.isEmpty()) {
+            EmptyStateImpl(
+                EmptyData(
+                    iconRes = R.drawable.ic_articles_list_empty_state,
+                    title = resourceProvider.getString(R.string.articles_empty_state_title),
+                    description = resourceProvider.getString(R.string.articles_empty_state_description)
+                )
+            )
+        } else {
+            state
         }
     }
 }
