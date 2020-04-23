@@ -38,9 +38,6 @@ constructor(
 
     private val hint: String
     private val title: String
-    private var cacheExpired: Boolean = false
-    private var cachedSearchText: String = ""
-    private var cachedSearchVisible: Boolean = false
     private var toolbarSearchListener: ToolbarSearchListener? = null
 
     init {
@@ -68,8 +65,7 @@ constructor(
         val centerStartX = toolbar.right
         val centerStartY = toolbar.bottom / 2
         val startRadius = 0f
-        val endRadius =
-            hypot(toolbar.width.toDouble(), toolbar.height.toDouble()).toFloat()
+        val endRadius = hypot(toolbar.width.toDouble(), toolbar.height.toDouble()).toFloat()
 
         val anim = ViewAnimationUtils.createCircularReveal(
             searchLinearLayout,
@@ -83,22 +79,14 @@ constructor(
             override fun onAnimationEnd(animation: Animator?) {
                 super.onAnimationEnd(animation)
 
-                cachedSearchText = ""
-                cachedSearchVisible = true
+                searchLinearLayout.isVisible = true
+                titleLinearLayout.isGone = true
                 searchEditText.showKeyboard()
                 toolbarSearchListener?.onSearchVisibilityChanged(true)
-
-                invalidateSearchViewVisibility()
             }
         })
         searchLinearLayout.isVisible = true
         anim.start()
-    }
-
-    private fun invalidateSearchViewVisibility() {
-        titleLinearLayout.isGone = cachedSearchVisible
-        searchLinearLayout.isVisible = cachedSearchVisible
-        closeImageButton.isVisible = cachedSearchVisible && cachedSearchText.isNotEmpty()
     }
 
     private fun setupSearchView() {
@@ -116,8 +104,8 @@ constructor(
             .debounce(SEARCH_DEBOUNCE)
             .distinctUntilChanged()
             .onEach { text ->
-                cachedSearchText = text
                 toolbarSearchListener?.onSearchTextChanged(text)
+                closeImageButton.isVisible = searchEditText.text.isNotEmpty()
             }
             .launchIn(this)
         closeImageButton.setOnClickListener {
@@ -126,17 +114,14 @@ constructor(
     }
 
     private fun clearSearch() {
-        cachedSearchText = ""
-        searchEditText.setText(cachedSearchText)
-
-        invalidateSearchViewVisibility()
+        searchEditText.setText("")
+        closeImageButton.isVisible = false
     }
 
     private fun hideSearch() {
         val centerStartX = toolbar.left
         val centerStartY = toolbar.bottom / 2
-        val startRadius =
-            hypot(toolbar.width.toDouble(), toolbar.height.toDouble()).toFloat()
+        val startRadius = hypot(toolbar.width.toDouble(), toolbar.height.toDouble()).toFloat()
         val endRadius = 0f
 
         val anim = ViewAnimationUtils.createCircularReveal(
@@ -151,12 +136,11 @@ constructor(
             override fun onAnimationEnd(animation: Animator?) {
                 super.onAnimationEnd(animation)
 
-                cachedSearchText = ""
-                cachedSearchVisible = false
+                searchEditText.setText("")
+                searchLinearLayout.isGone = true
+                titleLinearLayout.isVisible = true
                 searchEditText.hideKeyboard()
                 toolbarSearchListener?.onSearchVisibilityChanged(false)
-
-                invalidateSearchViewVisibility()
             }
         })
         anim.start()
@@ -167,31 +151,22 @@ constructor(
     }
 
     fun update(state: ToolbarSearchState) {
-        if (cachedSearchText != state.searchText || cacheExpired) {
-            cachedSearchText = state.searchText
-            searchEditText.setText(state.searchText)
-        }
-
-        if (cachedSearchVisible != state.searchVisible || cacheExpired) {
-            cachedSearchVisible = state.searchVisible
-
-            invalidateSearchViewVisibility()
-        }
-
-        cacheExpired = false
+        closeImageButton.isVisible = state.searchVisible && state.searchText.isNotEmpty()
+        searchEditText.setText(state.searchText)
+        searchLinearLayout.isVisible = state.searchVisible
+        titleLinearLayout.isGone = state.searchVisible
     }
 
     fun handleBackPressed(): Boolean {
         when {
-            cachedSearchVisible && cachedSearchText.isNotEmpty() -> clearSearch()
-            cachedSearchVisible && cachedSearchText.isEmpty() -> hideSearch()
+            searchLinearLayout.isVisible && searchEditText.text.isNotEmpty() -> clearSearch()
+            searchEditText.isVisible && searchEditText.text.isEmpty() -> hideSearch()
             else -> return false
         }
         return true
     }
 
     fun onDestroy() {
-        cacheExpired = true
         cancel()
     }
 

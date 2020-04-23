@@ -5,6 +5,7 @@ import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import androidx.core.view.isVisible
 
 /**
@@ -60,4 +61,8 @@ fun View.hideKeyboard(): Boolean {
     } catch (ignored: RuntimeException) {
     }
     return false
+}
+
+fun EditText.getString(): String {
+    return text.toString()
 }

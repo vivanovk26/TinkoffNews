@@ -2,6 +2,7 @@ package com.vivanov.tinkoffnews.presentation.delegates
 
 import android.os.Bundle
 import androidx.core.view.isVisible
+import com.vivanov.tinkoffnews.presentation.getString
 import com.vivanov.tinkoffnews.presentation.states.ToolbarSearchState
 import com.vivanov.tinkoffnews.presentation.views.ToolbarSearch
 import kotlinx.android.synthetic.main.view_toolbar_search.view.*
@@ -20,7 +21,7 @@ internal class ToolbarSearchDelegate(
 
     override fun shouldUpdate(state: ToolbarSearchState): Boolean {
         return toolbarSearch.searchLinearLayout.isVisible != state.searchVisible ||
-                toolbarSearch.searchEditText.text.toString() != state.searchText
+                toolbarSearch.searchEditText.getString() != state.searchText
     }
 
     override fun updateInternal(state: ToolbarSearchState) {
