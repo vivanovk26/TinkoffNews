@@ -7,5 +7,5 @@ import com.vivanov.tinkoffnews.common.domain.model.Article
  */
 internal interface ArticlesRepository {
 
-    suspend fun getArticles(): List<Article>
+    suspend fun getArticles(searchText: String): List<Article>
 }

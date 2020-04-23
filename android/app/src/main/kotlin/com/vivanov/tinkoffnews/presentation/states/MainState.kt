@@ -7,16 +7,27 @@ import com.vivanov.tinkoffnews.common.presentation.LoadingKeys
  * @author Vladimir Ivanov
  */
 internal data class MainState(
-    val listState: ListState<Article> = ListStateImpl(emptyList()),
+    val toolbarSearchState: ToolbarSearchState = ToolbarSearchStateImpl(
+        searchText = "",
+        searchVisible = false
+    ),
+    val listState: ListState<Article> = ListStateImpl(
+        items = emptyList()
+    ),
     val loadingState: LoadingState = LoadingStateImpl(
-        mapOf(
+        loadingStateMap = mapOf(
             LoadingKeys.INITIAL_KEY to false,
             LoadingKeys.REFRESH_KEY to false
         )
     ),
-    val emptyState: EmptyState = EmptyStateImpl(null),
-    val errorState: ErrorState = ErrorStateImpl(null)
-) : ListState<Article> by listState,
+    val emptyState: EmptyState = EmptyStateImpl(
+        emptyData = null
+    ),
+    val errorState: ErrorState = ErrorStateImpl(
+        error = null
+    )
+) : ToolbarSearchState by toolbarSearchState,
+    ListState<Article> by listState,
     LoadingState by loadingState,
     EmptyState by emptyState,
     ErrorState by errorState

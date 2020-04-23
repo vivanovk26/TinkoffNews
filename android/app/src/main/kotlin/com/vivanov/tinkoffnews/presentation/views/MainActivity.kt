@@ -18,6 +18,7 @@ internal class MainActivity : BaseActivity<MainPresenter, MainState>() {
 
     override fun createViewDelegates(): List<ViewDelegate<in MainState>> {
         return listOf(
+            ToolbarSearchDelegate(toolbarSearch, presenter),
             ListViewDelegate(recyclerView),
             LoadingViewDelegate(
                 mapOf(

@@ -7,7 +7,9 @@ import com.vivanov.tinkoffnews.common.domain.actions.ActionListener
  */
 interface ArticlesListInteractor : Interactor {
 
-    fun refreshArticles(actionListener: ActionListener)
-
     fun loadArticles(actionListener: ActionListener)
+
+    fun searchArticles(actionListener: ActionListener, searchText: String)
+
+    fun refreshArticles(actionListener: ActionListener)
 }

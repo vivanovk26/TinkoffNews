@@ -8,6 +8,7 @@ import com.vivanov.tinkoffnews.presentation.reducers.EmptyReducer
 import com.vivanov.tinkoffnews.presentation.reducers.ErrorReducer
 import com.vivanov.tinkoffnews.presentation.reducers.LoadingReducer
 import com.vivanov.tinkoffnews.presentation.states.MainState
+import com.vivanov.tinkoffnews.presentation.states.ToolbarSearchStateImpl
 
 /**
  * @author Vladimir Ivanov
@@ -37,6 +38,30 @@ internal class MainPresenterImpl(
             emptyState = emptyReducer.reduce(state, action),
             errorState = ErrorReducer.reduce(state.errorState, action)
         )
+    }
+
+    override fun onSearchTextChanged(text: String) {
+        val state = stateLiveData.value!! // TODO not a good idea
+        stateLiveData.value = state.copy(
+            toolbarSearchState = ToolbarSearchStateImpl(
+                searchText = text,
+                searchVisible = state.toolbarSearchState.searchVisible
+            )
+        )
+        articlesListInteractor.searchArticles(this, text)
+    }
+
+    override fun onSearchVisibilityChanged(visible: Boolean) {
+        val state = stateLiveData.value!! // TODO not a good idea
+        stateLiveData.value = state.copy(
+            toolbarSearchState = ToolbarSearchStateImpl(
+                searchText = "",
+                searchVisible = visible
+            )
+        )
+        if (!visible && state.searchText.isNotBlank()) {
+            articlesListInteractor.refreshArticles(this)
+        }
     }
 
     override fun onDestroy() {

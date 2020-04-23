@@ -91,4 +91,10 @@ internal abstract class BaseActivity<T : Presenter<K>, K : State> : Activity(), 
 
         super.onSaveInstanceState(outState)
     }
+
+    override fun onBackPressed() {
+        if (viewDelegates.none { viewDelegate -> viewDelegate.onBackPressed() }) {
+            super.onBackPressed()
+        }
+    }
 }
