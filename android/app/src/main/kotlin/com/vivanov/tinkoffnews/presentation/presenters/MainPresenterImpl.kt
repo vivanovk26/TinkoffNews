@@ -2,13 +2,10 @@ package com.vivanov.tinkoffnews.presentation.presenters
 
 import com.vivanov.tinkoffnews.common.domain.actions.Action
 import com.vivanov.tinkoffnews.common.domain.actions.ActionListener
+import com.vivanov.tinkoffnews.common.domain.actions.ToolbarSearchAction
 import com.vivanov.tinkoffnews.common.domain.interactors.ArticlesListInteractor
-import com.vivanov.tinkoffnews.presentation.reducers.ArticlesListReducer
-import com.vivanov.tinkoffnews.presentation.reducers.EmptyReducer
-import com.vivanov.tinkoffnews.presentation.reducers.ErrorReducer
-import com.vivanov.tinkoffnews.presentation.reducers.LoadingReducer
+import com.vivanov.tinkoffnews.presentation.reducers.*
 import com.vivanov.tinkoffnews.presentation.states.MainState
-import com.vivanov.tinkoffnews.presentation.states.ToolbarSearchStateImpl
 
 /**
  * @author Vladimir Ivanov
@@ -33,6 +30,7 @@ internal class MainPresenterImpl(
     override fun onNextAction(action: Action) {
         val state = stateLiveData.value!! // TODO not a good idea.
         stateLiveData.value = state.copy(
+            toolbarSearchState = ToolbarSearchReducer.reduce(state.toolbarSearchState, action),
             listState = ArticlesListReducer.reduce(state.listState, action),
             loadingState = LoadingReducer.reduce(state.loadingState, action),
             emptyState = emptyReducer.reduce(state, action),
@@ -41,25 +39,15 @@ internal class MainPresenterImpl(
     }
 
     override fun onSearchTextChanged(text: String) {
-        val state = stateLiveData.value!! // TODO not a good idea
-        stateLiveData.value = state.copy(
-            toolbarSearchState = ToolbarSearchStateImpl(
-                searchText = text,
-                searchVisible = state.toolbarSearchState.searchVisible
-            )
-        )
+        onNextAction(ToolbarSearchAction.Text(text))
+
         articlesListInteractor.searchArticles(this, text)
     }
 
     override fun onSearchVisibilityChanged(visible: Boolean) {
-        val state = stateLiveData.value!! // TODO not a good idea
-        stateLiveData.value = state.copy(
-            toolbarSearchState = ToolbarSearchStateImpl(
-                searchText = "",
-                searchVisible = visible
-            )
-        )
-        if (!visible && state.searchText.isNotBlank()) {
+        onNextAction(ToolbarSearchAction.Visible(visible))
+
+        if (!visible) {
             articlesListInteractor.refreshArticles(this)
         }
     }
