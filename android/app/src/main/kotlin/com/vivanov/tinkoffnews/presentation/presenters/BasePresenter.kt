@@ -3,14 +3,11 @@ package com.vivanov.tinkoffnews.presentation.presenters
 import android.os.Bundle
 import androidx.lifecycle.MutableLiveData
 import com.vivanov.tinkoffnews.presentation.states.State
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.cancel
 
 /**
  * @author Vladimir Ivanov
  */
-internal abstract class BasePresenter<T : State> : Presenter<T>, CoroutineScope by MainScope() {
+internal abstract class BasePresenter<T : State> : Presenter<T> {
 
     override val stateLiveData: MutableLiveData<T> = MutableLiveData()
 
@@ -33,9 +30,7 @@ internal abstract class BasePresenter<T : State> : Presenter<T>, CoroutineScope 
 
     override fun onViewDetached() = Unit
 
-    override fun onDestroy() {
-        cancel()
-    }
+    override fun onDestroy() = Unit
 
     private companion object {
 

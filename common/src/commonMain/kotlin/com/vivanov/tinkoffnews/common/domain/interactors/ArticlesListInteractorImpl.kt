@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.*
  */
 internal class ArticlesListInteractorImpl(
     private val articlesRepository: ArticlesRepository
-) : ArticlesListInteractor {
+) : BaseInteractor(), ArticlesListInteractor {
 
     override fun loadArticles(actionListener: ActionListener) {
         loadArticles(actionListener, LoadingKeys.INITIAL_KEY)
@@ -34,7 +34,7 @@ internal class ArticlesListInteractorImpl(
             .onEach { action ->
                 actionListener.onNextAction(action)
             }
-            .launchIn(actionListener)
+            .launchIn(this)
     }
 
     override fun refreshArticles(actionListener: ActionListener) {

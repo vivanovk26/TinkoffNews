@@ -30,12 +30,18 @@ internal class MainPresenterImpl(
     }
 
     override fun onNextAction(action: Action) {
-        val state = stateLiveData.value!! // TODO v.ivanov fix
+        val state = stateLiveData.value!! // TODO not a good idea.
         stateLiveData.value = state.copy(
             listState = ArticlesListReducer.reduce(state.listState, action),
             loadingState = LoadingReducer.reduce(state.loadingState, action),
             emptyState = emptyReducer.reduce(state, action),
             errorState = ErrorReducer.reduce(state.errorState, action)
         )
+    }
+
+    override fun onDestroy() {
+        articlesListInteractor.onDestroy() // TODO think again later.
+
+        super.onDestroy()
     }
 }

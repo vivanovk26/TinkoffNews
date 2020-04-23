@@ -9,7 +9,7 @@
 import UIKit
 import common
 
-class BookmarksViewController: UIViewController, UITableViewDataSource, InteractorListener {
+class BookmarksViewController: UIViewController, UITableViewDataSource, ActionListener {
     
     @IBOutlet weak var bookmarksTableView: UITableView!
     
@@ -18,8 +18,8 @@ class BookmarksViewController: UIViewController, UITableViewDataSource, Interact
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let articlesListInteractor = CommonDependenciesProvider.init().getInteractorsResolver().provideArticlesListInteractor()
-        articlesListInteractor.getArticles(interactorListener: self)
+        let articlesListInteractor = CommonDependenciesProvider.init().getArticlesListInteractor()
+        articlesListInteractor.loadArticles(actionListener: self)
         bookmarksTableView.dataSource = self
     }
     
@@ -33,20 +33,9 @@ class BookmarksViewController: UIViewController, UITableViewDataSource, Interact
         return cell
     }
     
-    func onStart() {
-        
-    }
-    
-    func onSuccess(result: Array<Article>) {
-        items.append(contentsOf: result)
+    func onNextAction(action: Action) {
+        guard let actionItems = (action as? ListAction<Article>)?.items as? [Article] else { return }
+        items.append(contentsOf: actionItems)
         bookmarksTableView.reloadData()
-    }
-    
-    func onError(throwable: KotlinThrowable) {
-        
-    }
-    
-    func onCompletion() {
-    
     }
 }

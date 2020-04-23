@@ -1,11 +1,9 @@
 package com.vivanov.tinkoffnews.common.domain.actions
 
-import kotlinx.coroutines.CoroutineScope
-
 /**
  * @author Vladimir Ivanov
  */
-interface ActionListener : CoroutineScope {
+interface ActionListener {
 
     fun onNextAction(action: Action)
 }

@@ -5,7 +5,7 @@ import com.vivanov.tinkoffnews.common.domain.actions.ActionListener
 /**
  * @author Vladimir Ivanov
  */
-interface ArticlesListInteractor {
+interface ArticlesListInteractor : Interactor {
 
     fun refreshArticles(actionListener: ActionListener)
 
