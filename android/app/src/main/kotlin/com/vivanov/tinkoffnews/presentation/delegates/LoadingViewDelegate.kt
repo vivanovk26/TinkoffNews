@@ -14,13 +14,22 @@ internal class LoadingViewDelegate(
 ) : BaseViewDelegate<LoadingState>() {
 
     override fun shouldUpdate(state: LoadingState): Boolean {
-        return viewsMap.map { (key, view) -> key to view.isVisible } != state.loadingStateMap
+        return viewsMap.map { (key, view) -> key to isInternalVisible(view) } != state.loadingStateMap
+    }
+
+    private fun isInternalVisible(view: View): Boolean {
+        return when (view) {
+            is SwipeRefreshLayout -> {
+                view.isRefreshing
+            }
+            else -> view.isVisible
+        }
     }
 
     override fun updateInternal(state: LoadingState) {
         viewsMap.forEach { (key, view) ->
             val newVisible = requireNotNull(state.loadingStateMap[key], { "This key: $key hadn't appeared in this map before" })
-            if (view.isVisible != newVisible) {
+            if (isInternalVisible(view) != newVisible) {
                 updateInternalView(view, newVisible)
             }
         }
