@@ -1,52 +1,57 @@
 <resources>
 
-    <style name="Toolbar">
-        <item name="android:background">@color/toolbar_background</item>
-    </style>
-
-    <style name="ToolbarTitle">
-        <item name="android:ellipsize">end</item>
-        <item name="android:fontFamily">@font/roboto_bold</item>
-        <item name="android:includeFontPadding">false</item>
-        <item name="android:textSize">@dimen/toolbar_title</item>
-        <item name="android:textColor">@color/toolbar_title_text</item>
-    </style>
-
-    <style name="ToolbarAction">
-        <item name="android:background">?android:attr/selectableItemBackground</item>
+    <!-- Text -->
+    <style name="Text">
         <item name="android:fontFamily">@font/roboto_regular</item>
         <item name="android:includeFontPadding">false</item>
-        <item name="android:textSize">@dimen/toolbar_action</item>
-        <item name="android:textColor">@color/toolbar_action_text</item>
+        <item name="android:textColor">@color/text_primary</item>
     </style>
 
-    <style name="ToolbarImageButton">
-        <item name="android:background">?android:attr/selectableItemBackground</item>
-        <item name="android:scaleType">centerInside</item>
-        <item name="android:tint">@color/selector_toolbar_action</item>
+    <style name="Text.Size14">
+        <item name="android:textSize">@dimen/sp14</item>
     </style>
 
+    <style name="Text.Size16">
+        <item name="android:textSize">@dimen/sp16</item>
+    </style>
+
+    <style name="Text.Size20">
+        <item name="android:textSize">@dimen/sp20</item>
+    </style>
+
+    <style name="Text.Size20.Bold">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+    </style>
+
+    <!-- Toolbar -->
+    <style name="Toolbar">
+        <item name="android:background">@color/background</item>
+    </style>
+
+    <!-- EditText -->
     <style name="EditText">
         <item name="android:background">@color/transparent</item>
         <item name="android:fontFamily">@font/roboto_regular</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:inputType">textCapSentences</item>
-        <item name="android:textSize">@dimen/edit_text</item>
-        <item name="android:textColor">@color/edit_text</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColorHint">@color/text_hint</item>
     </style>
 
-    <style name="EditText.Search">
-        <item name="android:textColor">@color/edit_text_search</item>
-        <item name="android:textColorHint">@color/edit_text_hint</item>
+    <style name="EditText.Size16">
+        <item name="android:textSize">@dimen/sp16</item>
     </style>
 
-    <style name="Button">
-        <item name="android:background">@drawable/bg_button</item>
-        <item name="android:fontFamily">@font/roboto_medium</item>
-        <item name="android:includeFontPadding">false</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:textSize">@dimen/button_text</item>
-        <item name="android:textColor">@color/selector_button</item>
+    <style name="EditText.Size18">
+        <item name="android:textSize">@dimen/sp18</item>
+    </style>
+
+    <style name="EditText.Size20">
+        <item name="android:textSize">@dimen/sp20</item>
+    </style>
+
+    <style name="EditText.Size20.Bold">
+        <item name="android:fontFamily">@font/roboto_bold</item>
     </style>
 
     <style name="ImageView">
@@ -58,86 +63,4 @@
         <item name="android:scaleType">centerInside</item>
     </style>
 
-    <!-- Bottom navigation items -->
-    <style name="BottomImageView">
-        <item name="android:scaleType">centerInside</item>
-        <item name="android:tint">@color/selector_bottom_navigation_item</item>
-    </style>
-
-    <style name="BottomTextView">
-        <item name="android:fontFamily">@font/roboto_regular</item>
-        <item name="android:includeFontPadding">false</item>
-        <item name="android:textColor">@color/selector_bottom_navigation_item</item>
-        <item name="android:textSize">@dimen/bottom_text</item>
-    </style>
-
-    <!-- Empty states -->
-    <style name="EmptyText">
-        <item name="android:includeFontPadding">false</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="EmptyText.Title">
-        <item name="android:fontFamily">@font/roboto_bold</item>
-        <item name="android:textSize">@dimen/empty_title_text</item>
-    </style>
-
-    <style name="EmptyText.Description">
-        <item name="android:fontFamily">@font/roboto_regular</item>
-        <item name="android:textSize">@dimen/empty_description_text</item>
-    </style>
-
-    <style name="RecyclerView">
-        <item name="android:scrollbars">vertical</item>
-    </style>
-
-    <!-- Article item -->
-    <style name="ArticleItem">
-        <item name="android:includeFontPadding">false</item>
-        <item name="android:textColor">@color/article_item_title_description_text</item>
-    </style>
-
-    <style name="ArticleItem.Title">
-        <item name="android:ellipsize">end</item>
-        <item name="android:fontFamily">@font/roboto_bold</item>
-        <item name="android:maxLines">@integer/article_item_title_max_lines</item>
-        <item name="android:textSize">@dimen/article_item_title_text</item>
-    </style>
-
-    <style name="ArticleItem.Description">
-        <item name="android:ellipsize">end</item>
-        <item name="android:fontFamily">@font/roboto_regular</item>
-        <item name="android:maxLines">@integer/article_item_description_max_lines</item>
-        <item name="android:textSize">@dimen/article_item_description_text</item>
-    </style>
-
-    <style name="ArticleItem.Date">
-        <item name="android:ellipsize">end</item>
-        <item name="android:fontFamily">@font/roboto_regular</item>
-        <item name="android:lines">@integer/article_item_date_lines</item>
-        <item name="android:textColor">@color/article_item_date_text</item>
-        <item name="android:textSize">@dimen/article_item_date_text</item>
-    </style>
-
-    <!-- Article -->
-    <style name="Article">
-        <item name="android:includeFontPadding">false</item>
-        <item name="android:textColor">@color/article_title_description_text</item>
-    </style>
-
-    <style name="Article.Title">
-        <item name="android:fontFamily">@font/roboto_bold</item>
-        <item name="android:textSize">@dimen/article_title_text</item>
-    </style>
-
-    <style name="Article.Description">
-        <item name="android:fontFamily">@font/roboto_regular</item>
-        <item name="android:textSize">@dimen/article_description_text</item>
-    </style>
-
-    <style name="Article.Date">
-        <item name="android:fontFamily">@font/roboto_regular</item>
-        <item name="android:textColor">@color/article_date_text</item>
-        <item name="android:textSize">@dimen/article_date_text</item>
-    </style>
 </resources>

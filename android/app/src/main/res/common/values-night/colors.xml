@@ -1,10 +1,10 @@
 <resources>
 
     <!-- Background -->
-    <color name="background">#f6f7f8</color>
+    <color name="background">#121212</color>
 
     <!-- Main -->
-    <color name="primary">#f6f7f8</color>
+    <color name="primary">#333333</color>
     <color name="secondary">#9299a2</color>
 
     <!-- Placeholders -->
@@ -12,12 +12,8 @@
     <color name="placeholder_background">@color/text_hint</color>
 
     <!-- Text -->
-    <color name="text_primary">#333333</color>
+    <color name="text_primary">#f6f7f8</color>
     <color name="text_secondary">@color/secondary</color>
-    <color name="text_hint">#c7c9cc</color>
-
-    <!-- Common -->
-    <color name="transparent">#00000000</color>
-    <color name="white_40">#40ffffff</color>
+    <color name="text_hint">#dddfe0</color>
 
 </resources>
