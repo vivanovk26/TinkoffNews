@@ -45,7 +45,8 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/dp16"
                     android:layout_weight="1"
-                    android:freezesText="true" />
+                    android:freezesText="true"
+                    tools:ignore="Autofill" />
 
                 <ImageButton
                     android:id="@+id/closeImageButton"

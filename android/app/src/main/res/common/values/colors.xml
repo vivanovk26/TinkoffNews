@@ -1,20 +1,24 @@
 <resources>
 
     <!-- Background -->
-    <color name="background">#f6f7f8</color>
+    <color name="background">#e0e0e0</color>
 
     <!-- Main -->
-    <color name="primary">#f6f7f8</color>
-    <color name="secondary">#9299a2</color>
+    <color name="primary">#fafafa</color>
+    <color name="secondary">#c7c7c7</color>
 
     <!-- Placeholders -->
-    <color name="placeholder">@color/text_secondary</color>
-    <color name="placeholder_background">@color/text_hint</color>
+    <color name="placeholder">#494949</color>
+    <color name="placeholder_background">#757575</color>
 
     <!-- Text -->
-    <color name="text_primary">#333333</color>
-    <color name="text_secondary">@color/secondary</color>
-    <color name="text_hint">#c7c9cc</color>
+    <color name="text_primary">#212121</color>
+    <color name="text_primary_reversed">@color/primary</color>
+    <color name="text_secondary">#424242</color>
+    <color name="text_hint">#484848</color>
+
+    <!-- Images -->
+    <color name="image_primary">#212121</color>
 
     <!-- Common -->
     <color name="transparent">#00000000</color>

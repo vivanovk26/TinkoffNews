@@ -23,9 +23,17 @@
         <item name="android:fontFamily">@font/roboto_bold</item>
     </style>
 
+    <style name="Text.Size20.PrimaryReversed">
+        <item name="android:textColor">@color/text_primary_reversed</item>
+    </style>
+
+    <style name="Text.Size20.PrimaryReversed.Bold">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+    </style>
+
     <!-- Toolbar -->
     <style name="Toolbar">
-        <item name="android:background">@color/background</item>
+        <item name="android:background">@color/primary</item>
     </style>
 
     <!-- EditText -->

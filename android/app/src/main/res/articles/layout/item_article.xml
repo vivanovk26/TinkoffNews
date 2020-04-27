@@ -32,7 +32,7 @@
                 android:layout_marginTop="@dimen/dp8"
                 android:ellipsize="end"
                 android:maxLines="3"
-                android:textAppearance="@style/Text.Size20.Bold"
+                android:textAppearance="@style/Text.Size20.PrimaryReversed.Bold"
                 tools:text="Breaking news" />
 
         </LinearLayout>
