@@ -46,10 +46,6 @@ internal class MainPresenterImpl(
 
     override fun onSearchVisibilityChanged(visible: Boolean) {
         onNextAction(ToolbarSearchAction.Visible(visible))
-
-        if (!visible) {
-            articlesListInteractor.refreshArticles(this)
-        }
     }
 
     override fun onDestroy() {

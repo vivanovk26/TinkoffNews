@@ -114,7 +114,9 @@ constructor(
     }
 
     private fun clearSearch() {
-        searchEditText.setText("")
+        if (searchEditText.text.isNotEmpty()) {
+            searchEditText.setText("")
+        }
         closeImageButton.isVisible = false
     }
 
@@ -136,7 +138,6 @@ constructor(
             override fun onAnimationEnd(animation: Animator?) {
                 super.onAnimationEnd(animation)
 
-                searchEditText.setText("")
                 searchLinearLayout.isGone = true
                 titleLinearLayout.isVisible = true
                 searchEditText.hideKeyboard()
