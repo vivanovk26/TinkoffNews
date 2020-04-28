@@ -160,7 +160,7 @@ constructor(
     fun handleBackPressed(): Boolean {
         when {
             searchLinearLayout.isVisible && searchEditText.text.isNotEmpty() -> clearSearch()
-            searchEditText.isVisible && searchEditText.text.isEmpty() -> hideSearch()
+            searchLinearLayout.isVisible && searchEditText.text.isEmpty() -> hideSearch()
             else -> return false
         }
         return true
