@@ -26,7 +26,7 @@ internal class ArticlesListInteractorImpl(
         loadingKey: String
     ) {
         flow {
-            emit(ListAction(articlesRepository.getArticles(searchText)) as Action)
+            emit(ListAction(articlesRepository.getArticles(searchText), searchText) as Action)
         }
             .onStart {
                 emit(LoadingAction.Show(loadingKey))

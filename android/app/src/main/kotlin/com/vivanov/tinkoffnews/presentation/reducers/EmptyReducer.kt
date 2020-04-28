@@ -18,12 +18,21 @@ internal class EmptyReducer(
     override fun reduce(state: EmptyState, action: Action): EmptyState {
         return when {
             action is ListAction<*> && action.items.isEmpty() -> {
+                val searchText = action.searchText
                 EmptyStateImpl(
-                    EmptyData(
-                        iconRes = R.drawable.ic_articles_list_empty_state,
-                        title = resourceProvider.getString(R.string.articles_empty_state_title),
-                        description = resourceProvider.getString(R.string.articles_empty_state_description)
-                    )
+                    emptyData = if (searchText.isEmpty()) {
+                        EmptyData(
+                            iconRes = R.drawable.ic_articles_list_empty_state,
+                            title = resourceProvider.getString(R.string.articles_empty_state_title),
+                            description = resourceProvider.getString(R.string.articles_empty_state_description)
+                        )
+                    } else {
+                        EmptyData(
+                            iconRes = R.drawable.ic_search_empty_state,
+                            title = resourceProvider.getString(R.string.search_empty_state_title, searchText),
+                            description = resourceProvider.getString(R.string.search_empty_state_description)
+                        )
+                    }
                 )
             }
             action is ListAction<*> && action.items.isNotEmpty() -> {
