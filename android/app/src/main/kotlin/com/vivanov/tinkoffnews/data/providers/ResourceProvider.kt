@@ -8,4 +8,6 @@ import androidx.annotation.StringRes
 internal interface ResourceProvider {
 
     fun getString(@StringRes resId: Int): String
+
+    fun getString(@StringRes resId: Int, vararg args: Any): String
 }

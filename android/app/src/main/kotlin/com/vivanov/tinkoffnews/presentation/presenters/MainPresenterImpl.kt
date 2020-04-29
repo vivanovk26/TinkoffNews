@@ -2,11 +2,9 @@ package com.vivanov.tinkoffnews.presentation.presenters
 
 import com.vivanov.tinkoffnews.common.domain.actions.Action
 import com.vivanov.tinkoffnews.common.domain.actions.ActionListener
+import com.vivanov.tinkoffnews.common.domain.actions.ToolbarSearchAction
 import com.vivanov.tinkoffnews.common.domain.interactors.ArticlesListInteractor
-import com.vivanov.tinkoffnews.presentation.reducers.ArticlesListReducer
-import com.vivanov.tinkoffnews.presentation.reducers.EmptyReducer
-import com.vivanov.tinkoffnews.presentation.reducers.ErrorReducer
-import com.vivanov.tinkoffnews.presentation.reducers.LoadingReducer
+import com.vivanov.tinkoffnews.presentation.reducers.*
 import com.vivanov.tinkoffnews.presentation.states.MainState
 
 /**
@@ -26,16 +24,33 @@ internal class MainPresenterImpl(
     }
 
     override fun refresh() {
-        articlesListInteractor.refreshArticles(this)
+        articlesListInteractor.searchArticles(this, state.searchText)
     }
 
     override fun onNextAction(action: Action) {
-        val state = stateLiveData.value!! // TODO v.ivanov fix
-        stateLiveData.value = state.copy(
-            listState = ArticlesListReducer.reduce(state.listState, action),
-            loadingState = LoadingReducer.reduce(state.loadingState, action),
-            emptyState = emptyReducer.reduce(state, action),
-            errorState = ErrorReducer.reduce(state.errorState, action)
+        val currentState = state
+        stateLiveData.value = currentState.copy(
+            toolbarSearchState = ToolbarSearchReducer.reduce(currentState.toolbarSearchState, action),
+            listState = ArticlesListReducer.reduce(currentState.listState, action),
+            loadingState = LoadingReducer.reduce(currentState.loadingState, action),
+            emptyState = emptyReducer.reduce(currentState, action),
+            errorState = ErrorReducer.reduce(currentState.errorState, action)
         )
+    }
+
+    override fun onSearchTextChanged(text: String) {
+        onNextAction(ToolbarSearchAction.Text(text))
+
+        articlesListInteractor.searchArticles(this, text)
+    }
+
+    override fun onSearchVisibilityChanged(visible: Boolean) {
+        onNextAction(ToolbarSearchAction.Visible(visible))
+    }
+
+    override fun onDestroy() {
+        articlesListInteractor.onDestroy() // TODO think again about unify for every interactor.
+
+        super.onDestroy()
     }
 }

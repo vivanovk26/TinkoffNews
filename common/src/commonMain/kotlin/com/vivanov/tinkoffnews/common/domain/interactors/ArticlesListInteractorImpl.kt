@@ -3,7 +3,6 @@ package com.vivanov.tinkoffnews.common.domain.interactors
 import com.vivanov.tinkoffnews.common.data.repository.ArticlesRepository
 import com.vivanov.tinkoffnews.common.domain.actions.*
 import com.vivanov.tinkoffnews.common.presentation.LoadingKeys
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 
 /**
@@ -11,16 +10,23 @@ import kotlinx.coroutines.flow.*
  */
 internal class ArticlesListInteractorImpl(
     private val articlesRepository: ArticlesRepository
-) : ArticlesListInteractor {
+) : BaseInteractor(), ArticlesListInteractor {
 
     override fun loadArticles(actionListener: ActionListener) {
-        loadArticles(actionListener, LoadingKeys.INITIAL_KEY)
+        loadArticles(
+            actionListener = actionListener,
+            searchText = "",
+            loadingKey = LoadingKeys.INITIAL_KEY
+        )
     }
 
-    private fun loadArticles(actionListener: ActionListener, loadingKey: String) {
+    private fun loadArticles(
+        actionListener: ActionListener,
+        searchText: String,
+        loadingKey: String
+    ) {
         flow {
-            delay(1000L)
-            emit(ListAction(articlesRepository.getArticles()) as Action)
+            emit(ListSearchAction(articlesRepository.getArticles(searchText), searchText) as Action)
         }
             .onStart {
                 emit(LoadingAction.Show(loadingKey))
@@ -34,10 +40,14 @@ internal class ArticlesListInteractorImpl(
             .onEach { action ->
                 actionListener.onNextAction(action)
             }
-            .launchIn(actionListener)
+            .launchIn(this)
     }
 
-    override fun refreshArticles(actionListener: ActionListener) {
-        loadArticles(actionListener, LoadingKeys.REFRESH_KEY)
+    override fun searchArticles(actionListener: ActionListener, searchText: String) {
+        loadArticles(
+            actionListener = actionListener,
+            searchText = searchText,
+            loadingKey = LoadingKeys.REFRESH_KEY
+        )
     }
 }

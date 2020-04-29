@@ -8,12 +8,12 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/article_item_photo_height">
+        android:layout_height="@dimen/dp200">
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/sdrv"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/article_item_photo_height"
+            android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             fresco:actualImageScaleType="centerCrop"
             fresco:overlayImage="@drawable/bg_article_image_overlay" />
@@ -27,10 +27,12 @@
 
             <TextView
                 android:id="@+id/titleTextView"
-                style="@style/ArticleItem.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/article_item_title_spacing"
+                android:layout_marginTop="@dimen/dp8"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:textAppearance="@style/Text.Size20.PrimaryReversed.Bold"
                 tools:text="Breaking news" />
 
         </LinearLayout>
@@ -41,16 +43,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/article_item_text_padding">
+        android:padding="@dimen/dp16">
 
         <TextView
             android:id="@+id/descriptionTextView"
-            style="@style/ArticleItem.Description"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="start"
             android:layout_weight="1"
+            android:ellipsize="end"
             android:gravity="center_vertical"
+            android:maxLines="2"
+            android:textAppearance="@style/Text.Size16"
             tools:text="Breaking description" />
 
         <LinearLayout
@@ -60,11 +64,13 @@
 
             <TextView
                 android:id="@+id/dateTextView"
-                style="@style/ArticleItem.Date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAppearance="@style/EditText.Size16"
                 tools:text="9 June 2018" />
 
             <ImageButton
@@ -73,7 +79,7 @@
                 android:layout_width="@dimen/icon"
                 android:layout_height="@dimen/icon"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_bookmark_disabled" />
+                android:src="@drawable/ic_bookmark" />
 
         </LinearLayout>
 

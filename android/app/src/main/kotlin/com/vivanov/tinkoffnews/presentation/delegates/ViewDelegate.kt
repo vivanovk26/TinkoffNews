@@ -26,4 +26,6 @@ internal interface ViewDelegate<T : State> {
     fun onDestroy() = Unit
 
     fun onSaveInstanceState(outState: Bundle) = Unit
+
+    fun onBackPressed(): Boolean = false
 }

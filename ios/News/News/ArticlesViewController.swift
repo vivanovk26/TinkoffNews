@@ -9,7 +9,7 @@
 import UIKit
 import common
 
-class ArticlesViewController: UIViewController, UITableViewDataSource, InteractorListener {
+class ArticlesViewController: UIViewController, UITableViewDataSource, ActionListener {
     
     @IBOutlet weak var articlesTableView: UITableView!
     
@@ -18,8 +18,8 @@ class ArticlesViewController: UIViewController, UITableViewDataSource, Interacto
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let articlesListInteractor = CommonDependenciesProvider.init().getInteractorsResolver().provideArticlesListInteractor()
-        articlesListInteractor.getArticles(interactorListener: self)
+        let articlesListInteractor = CommonDependenciesProvider.init().getArticlesListInteractor()
+        articlesListInteractor.loadArticles(actionListener: self)
         articlesTableView.dataSource = self
     }
     
@@ -33,21 +33,9 @@ class ArticlesViewController: UIViewController, UITableViewDataSource, Interacto
         return cell
     }
     
-    func onStart() {
-        print("OnStart")
-    }
-    
-    func onSuccess(result: Array<Article>) {
-        items.append(contentsOf: result)
+    func onNextAction(action: Action) {
+        guard let actionItems = (action as? ListAction<Article>)?.items as? [Article] else { return }
+        items.append(contentsOf: actionItems)
         articlesTableView.reloadData()
-        print("OnSuccess")
-    }
-    
-    func onError(throwable: KotlinThrowable) {
-        print("OnError")
-    }
-    
-    func onCompletion() {
-        print("OnCompletion")
     }
 }

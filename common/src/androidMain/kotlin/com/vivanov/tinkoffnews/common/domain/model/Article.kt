@@ -6,9 +6,9 @@ import java.io.Serializable
  * @author Vladimir Ivanov
  */
 actual data class Article actual constructor(
-    val id: Int,
-    val name: String,
-    val text: String,
-    val imageUrl: String,
-    val publicationDate: Long
+    actual val id: Int,
+    actual val name: String,
+    actual val text: String,
+    actual val imageUrl: String,
+    actual val publicationDate: Long
 ) : Serializable

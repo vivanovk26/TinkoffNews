@@ -2,7 +2,7 @@ package com.vivanov.tinkoffnews.presentation.reducers
 
 import com.vivanov.tinkoffnews.R
 import com.vivanov.tinkoffnews.common.domain.actions.Action
-import com.vivanov.tinkoffnews.common.domain.actions.ListAction
+import com.vivanov.tinkoffnews.common.domain.actions.ListSearchAction
 import com.vivanov.tinkoffnews.data.providers.ResourceProvider
 import com.vivanov.tinkoffnews.presentation.model.EmptyData
 import com.vivanov.tinkoffnews.presentation.states.EmptyState
@@ -16,16 +16,29 @@ internal class EmptyReducer(
 ) : Reducer<EmptyState> {
 
     override fun reduce(state: EmptyState, action: Action): EmptyState {
-        return if (action is ListAction<*> && action.items.isEmpty()) {
-            EmptyStateImpl(
-                EmptyData(
-                    iconRes = R.drawable.ic_articles_list_empty_state,
-                    title = resourceProvider.getString(R.string.articles_empty_state_title),
-                    description = resourceProvider.getString(R.string.articles_empty_state_description)
+        return when {
+            action is ListSearchAction<*> && action.items.isEmpty() -> {
+                val searchText = action.searchText
+                EmptyStateImpl(
+                    emptyData = if (searchText.isEmpty()) {
+                        EmptyData(
+                            iconRes = R.drawable.ic_articles_list_empty_state,
+                            title = resourceProvider.getString(R.string.articles_empty_state_title),
+                            description = resourceProvider.getString(R.string.articles_empty_state_description)
+                        )
+                    } else {
+                        EmptyData(
+                            iconRes = R.drawable.ic_search_empty_state,
+                            title = resourceProvider.getString(R.string.search_empty_state_title, searchText),
+                            description = resourceProvider.getString(R.string.search_empty_state_description)
+                        )
+                    }
                 )
-            )
-        } else {
-            state
+            }
+            action is ListSearchAction<*> && action.items.isNotEmpty() -> {
+                EmptyStateImpl(null)
+            }
+            else -> state
         }
     }
 }
