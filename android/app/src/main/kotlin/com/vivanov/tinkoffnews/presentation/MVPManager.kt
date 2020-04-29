@@ -36,6 +36,6 @@ internal object MVPManager {
     }
 
     fun removePresenter(presenter: Presenter<*>) {
-        map.remove(presenter::class)
+        map.values.remove(presenter)
     }
 }
