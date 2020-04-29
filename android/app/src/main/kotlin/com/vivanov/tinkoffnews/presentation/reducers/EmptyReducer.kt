@@ -2,7 +2,7 @@ package com.vivanov.tinkoffnews.presentation.reducers
 
 import com.vivanov.tinkoffnews.R
 import com.vivanov.tinkoffnews.common.domain.actions.Action
-import com.vivanov.tinkoffnews.common.domain.actions.ListAction
+import com.vivanov.tinkoffnews.common.domain.actions.ListSearchAction
 import com.vivanov.tinkoffnews.data.providers.ResourceProvider
 import com.vivanov.tinkoffnews.presentation.model.EmptyData
 import com.vivanov.tinkoffnews.presentation.states.EmptyState
@@ -17,7 +17,7 @@ internal class EmptyReducer(
 
     override fun reduce(state: EmptyState, action: Action): EmptyState {
         return when {
-            action is ListAction<*> && action.items.isEmpty() -> {
+            action is ListSearchAction<*> && action.items.isEmpty() -> {
                 val searchText = action.searchText
                 EmptyStateImpl(
                     emptyData = if (searchText.isEmpty()) {
@@ -35,12 +35,10 @@ internal class EmptyReducer(
                     }
                 )
             }
-            action is ListAction<*> && action.items.isNotEmpty() -> {
+            action is ListSearchAction<*> && action.items.isNotEmpty() -> {
                 EmptyStateImpl(null)
             }
-            else -> {
-                state
-            }
+            else -> state
         }
     }
 }

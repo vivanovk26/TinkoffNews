@@ -10,6 +10,8 @@ import com.vivanov.tinkoffnews.presentation.states.State
 internal abstract class BasePresenter<T : State> : Presenter<T> {
 
     override val stateLiveData: MutableLiveData<T> = MutableLiveData()
+    protected val state: T
+        get() = stateLiveData.value!! // TODO not a good idea.
 
     protected abstract fun createState(): T
 

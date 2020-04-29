@@ -26,7 +26,7 @@ internal class ArticlesListInteractorImpl(
         loadingKey: String
     ) {
         flow {
-            emit(ListAction(articlesRepository.getArticles(searchText), searchText) as Action)
+            emit(ListSearchAction(articlesRepository.getArticles(searchText), searchText) as Action)
         }
             .onStart {
                 emit(LoadingAction.Show(loadingKey))
@@ -47,14 +47,6 @@ internal class ArticlesListInteractorImpl(
         loadArticles(
             actionListener = actionListener,
             searchText = searchText,
-            loadingKey = LoadingKeys.REFRESH_KEY
-        )
-    }
-
-    override fun refreshArticles(actionListener: ActionListener) {
-        loadArticles(
-            actionListener = actionListener,
-            searchText = "",
             loadingKey = LoadingKeys.REFRESH_KEY
         )
     }

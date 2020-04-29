@@ -24,17 +24,17 @@ internal class MainPresenterImpl(
     }
 
     override fun refresh() {
-        articlesListInteractor.refreshArticles(this)
+        articlesListInteractor.searchArticles(this, state.searchText)
     }
 
     override fun onNextAction(action: Action) {
-        val state = stateLiveData.value!! // TODO not a good idea.
-        stateLiveData.value = state.copy(
-            toolbarSearchState = ToolbarSearchReducer.reduce(state.toolbarSearchState, action),
-            listState = ArticlesListReducer.reduce(state.listState, action),
-            loadingState = LoadingReducer.reduce(state.loadingState, action),
-            emptyState = emptyReducer.reduce(state, action),
-            errorState = ErrorReducer.reduce(state.errorState, action)
+        val currentState = state
+        stateLiveData.value = currentState.copy(
+            toolbarSearchState = ToolbarSearchReducer.reduce(currentState.toolbarSearchState, action),
+            listState = ArticlesListReducer.reduce(currentState.listState, action),
+            loadingState = LoadingReducer.reduce(currentState.loadingState, action),
+            emptyState = emptyReducer.reduce(currentState, action),
+            errorState = ErrorReducer.reduce(currentState.errorState, action)
         )
     }
 
@@ -49,7 +49,7 @@ internal class MainPresenterImpl(
     }
 
     override fun onDestroy() {
-        articlesListInteractor.onDestroy() // TODO think again later.
+        articlesListInteractor.onDestroy() // TODO think again about unify for every interactor.
 
         super.onDestroy()
     }

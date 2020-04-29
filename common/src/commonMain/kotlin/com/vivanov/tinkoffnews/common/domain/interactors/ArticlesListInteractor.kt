@@ -10,6 +10,4 @@ interface ArticlesListInteractor : Interactor {
     fun loadArticles(actionListener: ActionListener)
 
     fun searchArticles(actionListener: ActionListener, searchText: String)
-
-    fun refreshArticles(actionListener: ActionListener)
 }
