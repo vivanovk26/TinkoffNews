@@ -45,7 +45,6 @@ ext {
     okhttpVersion = "3.11.0"
     recyclerViewVersion = "1.1.0"
     shimmerVersion = "0.5.0"
-    sqldelightVersion = "1.3.0"
     swipeRefreshLayoutVersion = "1.0.0"
     timberVersion = "4.7.1"
 
@@ -54,7 +53,8 @@ ext {
 
     // Common
     coroutinesVersion = "1.3.5-native-mt-1.4-M1"
-    kotlinVersion = "1.3.71"
+    kotlinVersion = "1.4-M1"
     ktorVersion = "1.3.2-1.4-M1"
     serializationVersion = "0.20.0-1.4-M1"
+    sqlDelightVersion = "1.3.0"
 }

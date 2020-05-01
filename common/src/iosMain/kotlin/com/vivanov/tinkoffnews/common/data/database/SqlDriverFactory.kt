@@ -7,5 +7,5 @@ import com.vivanov.tinkoffnews.Database
  */
 internal actual object SqlDriverFactory {
 
-    actual fun createSqlDriver(): SqlDriver = NativeSqliteDriver(Database.Schema, "test.db")
+    actual fun createSqlDriver(): SqlDriver = NativeSqliteDriver(Database.Schema, "articles.db")
 }

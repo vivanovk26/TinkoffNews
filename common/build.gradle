@@ -38,8 +38,6 @@ kotlin {
                 implementation "io.ktor:ktor-client-json:${rootProject.ext.ktorVersion}"
                 implementation "io.ktor:ktor-client-logging:${rootProject.ext.ktorVersion}"
                 implementation "io.ktor:ktor-client-serialization:${rootProject.ext.ktorVersion}"
-
-                implementation "com.squareup.sqldelight:runtime:${rootProject.ext.sqldelightVersion}"
             }
         }
 
@@ -59,7 +57,8 @@ kotlin {
                 implementation "io.ktor:ktor-client-logging-jvm:${rootProject.ext.ktorVersion}"
                 implementation "io.ktor:ktor-client-serialization-jvm:${rootProject.ext.ktorVersion}"
 
-                implementation "com.squareup.sqldelight:android-driver:${rootProject.ext.sqldelightVersion}"
+                // SQLDelight
+                implementation "com.squareup.sqldelight:sqlite-driver:${rootProject.ext.sqlDelightVersion}"
             }
         }
 
@@ -80,7 +79,7 @@ kotlin {
                 implementation "io.ktor:ktor-client-serialization-native:${rootProject.ext.ktorVersion}"
 
                 // SQLDelight
-                implementation "com.squareup.sqldelight:native-driver:${rootProject.ext.sqldelightVersion}"
+                implementation "com.squareup.sqldelight:native-driver:${rootProject.ext.sqlDelightVersion}"
             }
         }
     }
