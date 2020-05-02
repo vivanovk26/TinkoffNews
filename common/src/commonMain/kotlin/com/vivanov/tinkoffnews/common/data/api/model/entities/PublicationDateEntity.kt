@@ -1,4 +1,4 @@
-package com.vivanov.tinkoffnews.common.data.network.model.entities
+package com.vivanov.tinkoffnews.common.data.api.model.entities
 
 import kotlinx.serialization.Serializable
 

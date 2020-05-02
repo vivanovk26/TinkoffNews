@@ -1,4 +1,4 @@
-package com.vivanov.tinkoffnews.common.data.network.http
+package com.vivanov.tinkoffnews.common.data.api.http
 
 import io.ktor.client.HttpClient
 import io.ktor.client.features.HttpTimeout

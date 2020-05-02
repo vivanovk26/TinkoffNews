@@ -1,6 +1,6 @@
-package com.vivanov.tinkoffnews.common.data.network.model.responses
+package com.vivanov.tinkoffnews.common.data.api.model.responses
 
-import com.vivanov.tinkoffnews.common.data.network.model.entities.ArticleEntity
+import com.vivanov.tinkoffnews.common.data.api.model.entities.ArticleEntity
 import kotlinx.serialization.Serializable
 
 /**

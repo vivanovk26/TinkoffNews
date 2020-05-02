@@ -1,6 +1,6 @@
-package com.vivanov.tinkoffnews.common.data.network.mappers
+package com.vivanov.tinkoffnews.common.data.api.mappers
 
-import com.vivanov.tinkoffnews.common.data.network.model.responses.ArticlesResponse
+import com.vivanov.tinkoffnews.common.data.api.model.responses.ArticlesResponse
 import com.vivanov.tinkoffnews.common.domain.model.Article
 
 /**

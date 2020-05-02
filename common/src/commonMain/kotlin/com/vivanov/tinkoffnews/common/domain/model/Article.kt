@@ -4,15 +4,17 @@ package com.vivanov.tinkoffnews.common.domain.model
  * @author Vladimir Ivanov
  */
 expect class Article constructor(
-    id: Int,
+    id: Long,
     name: String,
     text: String,
     imageUrl: String,
-    publicationDate: Long
+    publicationDate: Long,
+    databaseState: DatabaseState
 ) {
-    val id: Int
+    val id: Long
     val name: String
     val text: String
     val imageUrl: String
     val publicationDate: Long
+    var databaseState: DatabaseState
 }

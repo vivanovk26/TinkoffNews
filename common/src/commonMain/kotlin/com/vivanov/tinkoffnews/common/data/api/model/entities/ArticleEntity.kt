@@ -1,4 +1,4 @@
-package com.vivanov.tinkoffnews.common.data.network.model.entities
+package com.vivanov.tinkoffnews.common.data.api.model.entities
 
 import kotlinx.serialization.Serializable
 
@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 internal class ArticleEntity(
-    val id: Int? = null,
+    val id: Long? = null,
     val name: String? = null,
     val text: String? = null,
     val publicationDate: PublicationDateEntity? = null

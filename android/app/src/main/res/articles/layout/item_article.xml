@@ -74,12 +74,12 @@
                 tools:text="9 June 2018" />
 
             <ImageButton
-                android:id="@+id/bookmarkTextView"
+                android:id="@+id/bookmarkImageButton"
                 style="@style/ImageButton"
                 android:layout_width="@dimen/icon"
                 android:layout_height="@dimen/icon"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_bookmark" />
+                tools:src="@drawable/ic_bookmark_enabled" />
 
         </LinearLayout>
 

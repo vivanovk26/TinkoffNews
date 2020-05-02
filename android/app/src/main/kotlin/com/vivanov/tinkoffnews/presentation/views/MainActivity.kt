@@ -19,7 +19,7 @@ internal class MainActivity : BaseActivity<MainPresenter, MainState>() {
     override fun createViewDelegates(): List<ViewDelegate<in MainState>> {
         return listOf(
             ToolbarSearchDelegate(toolbarSearch, presenter),
-            ListViewDelegate(recyclerView),
+            ListViewDelegate(recyclerView, presenter),
             LoadingViewDelegate(
                 mapOf(
                     LoadingKeys.INITIAL_KEY to placeholderView,

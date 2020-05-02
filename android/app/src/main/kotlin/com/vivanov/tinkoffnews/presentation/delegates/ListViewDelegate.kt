@@ -12,10 +12,11 @@ import com.vivanov.tinkoffnews.presentation.views.list.ArticlesListAdapter
  * @author Vladimir Ivanov
  */
 internal class ListViewDelegate(
-    private val recyclerView: RecyclerView
+    private val recyclerView: RecyclerView,
+    bookmarkClickListener: ArticlesListAdapter.BookmarkClickListener
 ) : BaseViewDelegate<ListState<Article>>() {
 
-    private val adapter: ListAdapter<Article, *> = ArticlesListAdapter()
+    private val adapter: ListAdapter<Article, *> = ArticlesListAdapter(bookmarkClickListener)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         recyclerView.setHasFixedSize(true)

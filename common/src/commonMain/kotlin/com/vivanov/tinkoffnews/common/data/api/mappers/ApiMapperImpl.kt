@@ -1,9 +1,10 @@
-package com.vivanov.tinkoffnews.common.data.network.mappers
+package com.vivanov.tinkoffnews.common.data.api.mappers
 
+import com.vivanov.tinkoffnews.common.data.api.model.entities.ArticleEntity
+import com.vivanov.tinkoffnews.common.data.api.model.responses.ArticlesResponse
 import com.vivanov.tinkoffnews.common.data.exceptions.ParseException
-import com.vivanov.tinkoffnews.common.data.network.model.entities.ArticleEntity
-import com.vivanov.tinkoffnews.common.data.network.model.responses.ArticlesResponse
 import com.vivanov.tinkoffnews.common.domain.model.Article
+import com.vivanov.tinkoffnews.common.domain.model.DatabaseState
 import kotlin.reflect.KClass
 
 /**
@@ -33,7 +34,8 @@ internal class ApiMapperImpl : ApiMapper {
                 name = entity.name.requireNotNullOrNotEmptyString(),
                 text = entity.text.requireNotNullOrNotEmptyString(),
                 imageUrl = "https://i.picsum.photos/id/${id.rem(1000)}/400/300.jpg", // Add some photo. Because API doesn't provide it.
-                publicationDate = entity.publicationDate?.milliseconds.requireNotNull()
+                publicationDate = entity.publicationDate?.milliseconds.requireNotNull(),
+                databaseState = DatabaseState.UNKNOWN
             )
         } ?: throwParsingException(ArticleEntity::class)
     }

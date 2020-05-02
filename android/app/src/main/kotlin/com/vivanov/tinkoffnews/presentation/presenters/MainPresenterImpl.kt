@@ -4,6 +4,7 @@ import com.vivanov.tinkoffnews.common.domain.actions.Action
 import com.vivanov.tinkoffnews.common.domain.actions.ActionListener
 import com.vivanov.tinkoffnews.common.domain.actions.ToolbarSearchAction
 import com.vivanov.tinkoffnews.common.domain.interactors.ArticlesListInteractor
+import com.vivanov.tinkoffnews.common.domain.model.Article
 import com.vivanov.tinkoffnews.presentation.reducers.*
 import com.vivanov.tinkoffnews.presentation.states.MainState
 
@@ -46,6 +47,10 @@ internal class MainPresenterImpl(
 
     override fun onSearchVisibilityChanged(visible: Boolean) {
         onNextAction(ToolbarSearchAction.Visible(visible))
+    }
+
+    override fun onBookmarkClick(article: Article) {
+        articlesListInteractor.updateBookmark(this, article)
     }
 
     override fun onDestroy() {
