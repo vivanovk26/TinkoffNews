@@ -2,15 +2,13 @@ apply plugin: "com.squareup.sqldelight"
 apply plugin: "kotlin-multiplatform"
 apply plugin: "kotlinx-serialization"
 
-apply plugin: "kotlin-android-extensions"
-
 kotlin {
 
     targets {
         jvm("android")
 
-        final def iosTarget = System.getenv('SDK_NAME')?.startsWith("iphoneos")   \
-                                ? presets.iosArm64 : presets.iosX64
+        final def iosTarget = System.getenv('SDK_NAME')?.startsWith("iphoneos")     \
+                                  ? presets.iosArm64 : presets.iosX64
 
         fromPreset(iosTarget, "ios") {
             binaries {
@@ -56,9 +54,6 @@ kotlin {
                 implementation "io.ktor:ktor-client-json-jvm:${rootProject.ext.ktorVersion}"
                 implementation "io.ktor:ktor-client-logging-jvm:${rootProject.ext.ktorVersion}"
                 implementation "io.ktor:ktor-client-serialization-jvm:${rootProject.ext.ktorVersion}"
-
-                // SQLDelight
-                implementation "com.squareup.sqldelight:sqlite-driver:${rootProject.ext.sqlDelightVersion}"
             }
         }
 

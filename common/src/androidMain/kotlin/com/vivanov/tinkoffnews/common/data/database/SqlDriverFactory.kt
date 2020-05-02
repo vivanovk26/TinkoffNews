@@ -1,13 +1,23 @@
 package com.vivanov.tinkoffnews.common.data.database
 
 import com.squareup.sqldelight.db.SqlDriver
-import com.squareup.sqldelight.sqlite.driver.JdbcSqliteDriver
 
 /**
  * @author Vladimir Ivanov
  */
-internal actual object SqlDriverFactory {
+actual object SqlDriverFactory {
 
-    // Actually there is Android SqliteDriver but it requires Context.
-    actual fun createSqlDriver(): SqlDriver = JdbcSqliteDriver(JdbcSqliteDriver.IN_MEMORY)
+    private var sqlDriver: SqlDriver? = null
+
+    actual fun createSqlDriver(): SqlDriver {
+        // Because we already set it from setSqlDriver
+        return sqlDriver!!
+    }
+
+    /**
+     * This is a special method for Android. Because AndroidSqlDriver requires context.
+     */
+    fun setupSqlDriver(sqlDriver: SqlDriver) {
+        this.sqlDriver = sqlDriver
+    }
 }

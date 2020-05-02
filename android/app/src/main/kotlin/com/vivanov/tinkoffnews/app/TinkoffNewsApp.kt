@@ -4,6 +4,9 @@ import android.app.Application
 import com.facebook.cache.disk.DiskCacheConfig
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.imagepipeline.backends.okhttp3.OkHttpImagePipelineConfigFactory
+import com.squareup.sqldelight.android.AndroidSqliteDriver
+import com.vivanov.tinkoffnews.Database
+import com.vivanov.tinkoffnews.common.data.database.SqlDriverFactory
 import com.vivanov.tinkoffnews.data.OkHttpClientProvider
 import com.vivanov.tinkoffnews.di.DependenciesProvider
 import com.vivanov.tinkoffnews.di.DependenciesProviderImpl
@@ -18,6 +21,7 @@ class TinkoffNewsApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
+        SqlDriverFactory.setupSqlDriver(AndroidSqliteDriver(Database.Schema, this, "TinkoffNews.db"))
         dependenciesProvider.setup(this)
         setupFresco()
     }

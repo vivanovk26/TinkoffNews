@@ -22,6 +22,9 @@ dependencies {
     // Shimmer
     implementation "com.facebook.shimmer:shimmer:$rootProject.ext.shimmerVersion"
 
+    // SQLDelight
+    implementation "com.squareup.sqldelight:android-driver:$rootProject.ext.sqlDelightVersion"
+
     // Utils
     implementation "com.facebook.fresco:fresco:$rootProject.ext.frescoVersion"
     implementation "com.facebook.fresco:imagepipeline-okhttp3:$rootProject.ext.frescoVersion"
