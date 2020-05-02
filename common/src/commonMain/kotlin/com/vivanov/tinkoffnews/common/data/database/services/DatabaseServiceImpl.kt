@@ -16,10 +16,10 @@ internal class DatabaseServiceImpl(
 ) : DatabaseService {
 
     private val articleDbQueries: ArticleDbQueries = database.articleDbQueries
-    private val articleDbIds: MutableList<Long> = mutableListOf()
+    private val articleDbIds: MutableSet<Long> = mutableSetOf()
     private var articleDbIdsLoaded: Boolean = false
 
-    override suspend fun getAllArticleIds(): List<Long> {
+    override suspend fun getAllArticleIds(): Set<Long> {
         return articleDbIds.apply {
             if (!articleDbIdsLoaded) {
                 withContext(Dispatchers.Default) {
@@ -37,14 +37,16 @@ internal class DatabaseServiceImpl(
     }
 
     override suspend fun insertArticle(article: Article) {
-        return withContext(Dispatchers.Default) {
+        withContext(Dispatchers.Default) {
             articleDbQueries.insert(databaseMapper.mapArticleToDb(article))
+            articleDbIds.add(article.id)
         }
     }
 
     override suspend fun deleteArticle(id: Long) {
-        return withContext(Dispatchers.Default) {
+        withContext(Dispatchers.Default) {
             articleDbQueries.delete(id)
+            articleDbIds.remove(id)
         }
     }
 }

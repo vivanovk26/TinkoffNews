@@ -6,5 +6,17 @@ actual class Article actual constructor(
     actual val text: String,
     actual val imageUrl: String,
     actual val publicationDate: Long,
-    actual var databaseState: DatabaseState
-)
+    actual val databaseState: DatabaseState
+) {
+
+    actual fun copyDatabaseState(databaseState: DatabaseState): Article {
+        return Article(
+            id = id,
+            name = name,
+            text = text,
+            imageUrl = imageUrl,
+            publicationDate = publicationDate,
+            databaseState = databaseState
+        )
+    }
+}

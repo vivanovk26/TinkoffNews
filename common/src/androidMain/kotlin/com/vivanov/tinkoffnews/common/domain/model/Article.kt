@@ -11,5 +11,10 @@ actual data class Article actual constructor(
     actual val text: String,
     actual val imageUrl: String,
     actual val publicationDate: Long,
-    actual var databaseState: DatabaseState
-) : Serializable
+    actual val databaseState: DatabaseState
+) : Serializable {
+
+    actual fun copyDatabaseState(databaseState: DatabaseState): Article {
+        return copy(databaseState = databaseState)
+    }
+}

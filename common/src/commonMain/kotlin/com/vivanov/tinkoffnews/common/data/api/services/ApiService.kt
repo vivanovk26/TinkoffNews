@@ -7,5 +7,5 @@ import com.vivanov.tinkoffnews.common.domain.model.Article
  */
 internal interface ApiService {
 
-    suspend fun getArticles(): List<Article>
+    suspend fun getArticles(articleDbIds: Set<Long>): List<Article>
 }

@@ -16,5 +16,7 @@ expect class Article constructor(
     val text: String
     val imageUrl: String
     val publicationDate: Long
-    var databaseState: DatabaseState
+    val databaseState: DatabaseState
+
+    fun copyDatabaseState(databaseState: DatabaseState): Article
 }

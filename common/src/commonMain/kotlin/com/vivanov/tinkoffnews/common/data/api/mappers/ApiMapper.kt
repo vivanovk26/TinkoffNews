@@ -8,5 +8,5 @@ import com.vivanov.tinkoffnews.common.domain.model.Article
  */
 internal interface ApiMapper {
 
-    fun mapArticleResponse(articlesResponse: ArticlesResponse?): List<Article>
+    fun mapArticleResponse(articlesResponse: ArticlesResponse?, articleDbIds: Set<Long>): List<Article>
 }

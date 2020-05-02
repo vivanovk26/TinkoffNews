@@ -12,10 +12,10 @@ import kotlin.reflect.KClass
  */
 internal class ApiMapperImpl : ApiMapper {
 
-    override fun mapArticleResponse(articlesResponse: ArticlesResponse?): List<Article> {
+    override fun mapArticleResponse(articlesResponse: ArticlesResponse?, articleDbIds: Set<Long>): List<Article> {
         return articlesResponse?.payload?.let { articleEntities ->
             articleEntities.filter { articleEntity -> isArticleEntityValid(articleEntity) }
-                .map { articleEntity -> mapArticleEntity(articleEntity) }
+                .map { articleEntity -> mapArticleEntity(articleEntity, articleDbIds) }
         } ?: throwParsingException(ArticlesResponse::class)
     }
 
@@ -26,7 +26,7 @@ internal class ApiMapperImpl : ApiMapper {
                 articleEntity.publicationDate?.milliseconds != null
     }
 
-    private fun mapArticleEntity(articleEntity: ArticleEntity?): Article {
+    private fun mapArticleEntity(articleEntity: ArticleEntity?, articleDbIds: Set<Long>): Article {
         return articleEntity?.let { entity ->
             val id = entity.id.requireNotNull()
             Article(
@@ -35,9 +35,16 @@ internal class ApiMapperImpl : ApiMapper {
                 text = entity.text.requireNotNullOrNotEmptyString(),
                 imageUrl = "https://i.picsum.photos/id/${id.rem(1000)}/400/300.jpg", // Add some photo. Because API doesn't provide it.
                 publicationDate = entity.publicationDate?.milliseconds.requireNotNull(),
-                databaseState = DatabaseState.UNKNOWN
+                databaseState = getArticleState(id, articleDbIds)
             )
         } ?: throwParsingException(ArticleEntity::class)
+    }
+
+    private fun getArticleState(articleId: Long, articleDbIds: Set<Long>): DatabaseState {
+        return when (articleId) {
+            in articleDbIds -> DatabaseState.IN_DATABASE
+            else -> DatabaseState.OUT_DATABASE
+        }
     }
 
     private fun String?.requireNotNullOrNotEmptyString(): String {

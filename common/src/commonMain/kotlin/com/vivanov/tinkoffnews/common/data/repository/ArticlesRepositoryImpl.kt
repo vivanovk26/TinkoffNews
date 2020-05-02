@@ -18,19 +18,11 @@ internal class ArticlesRepositoryImpl(
     override suspend fun getArticlesFromApi(searchText: String): List<Article> {
         return if (searchText.isBlank()) {
             cachedArticles.clear()
-            val articles = apiService.getArticles()
-            articles.forEach { article -> article.databaseState = getArticleState(article) }
+            val articles = apiService.getArticles(databaseService.getAllArticleIds())
             cachedArticles.addAll(articles)
             cachedArticles
         } else {
             cachedArticles.filter { article -> article.name.contains(searchText) || article.text.contains(searchText) }
-        }
-    }
-
-    private suspend fun getArticleState(article: Article): DatabaseState {
-        return when (article.id) {
-            in databaseService.getAllArticleIds() -> DatabaseState.IN_DATABASE
-            else -> DatabaseState.OUT_DATABASE
         }
     }
 
@@ -39,17 +31,16 @@ internal class ArticlesRepositoryImpl(
     }
 
     override suspend fun updateArticle(article: Article): Article {
-        when (article.databaseState) {
+        return when (article.databaseState) {
             DatabaseState.IN_DATABASE -> {
                 databaseService.deleteArticle(article.id)
-                article.databaseState = DatabaseState.OUT_DATABASE // TODO possible error
+                article.copyDatabaseState(DatabaseState.OUT_DATABASE)
             }
             DatabaseState.OUT_DATABASE -> {
                 databaseService.insertArticle(article)
-                article.databaseState = DatabaseState.IN_DATABASE // TODO possible error
+                article.copyDatabaseState(DatabaseState.IN_DATABASE)
             }
-            else -> Unit
+            else -> article
         }
-        return article
     }
 }

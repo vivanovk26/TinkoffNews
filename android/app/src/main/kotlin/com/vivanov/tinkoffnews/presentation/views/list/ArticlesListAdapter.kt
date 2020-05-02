@@ -26,14 +26,24 @@ internal class ArticlesListAdapter(
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_article, parent, false))
     }
 
+    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int, payloads: List<Any>) {
+        when {
+            payloads.contains(Payload.BOOKMARK) -> viewHolder.bookmarkImageButton.setImageDrawable(
+                getBookmarkImage(viewHolder.containerView.context, getItem(position).databaseState)
+            )
+            else -> super.onBindViewHolder(viewHolder, position, payloads)
+        }
+    }
+
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        val article = getItem(position)
-        viewHolder.titleTextView.text = article.name
-        viewHolder.descriptionTextView.text = article.text
-        viewHolder.sdrv.setImageURI(article.imageUrl)
-        viewHolder.bookmarkImageButton.setImageDrawable(getBookmarkImage(viewHolder.containerView.context, article.databaseState))
-        viewHolder.bookmarkImageButton.setOnClickListener {
-            bookmarkClickListener.onBookmarkClick(article)
+        with(getItem(position)) {
+            viewHolder.titleTextView.text = name
+            viewHolder.descriptionTextView.text = text
+            viewHolder.sdrv.setImageURI(imageUrl)
+            viewHolder.bookmarkImageButton.setImageDrawable(getBookmarkImage(viewHolder.containerView.context, databaseState))
+            viewHolder.bookmarkImageButton.setOnClickListener {
+                bookmarkClickListener.onBookmarkClick(this)
+            }
         }
     }
 
@@ -60,6 +70,24 @@ internal class ArticlesListAdapter(
         override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean {
             return oldItem == newItem
         }
+
+        override fun getChangePayload(oldItem: Article, newItem: Article): Any? {
+            if (oldItem.id == newItem.id &&
+                oldItem.name == newItem.name &&
+                oldItem.text == newItem.text &&
+                oldItem.imageUrl == newItem.imageUrl &&
+                oldItem.publicationDate == newItem.publicationDate &&
+                oldItem.databaseState != newItem.databaseState
+            ) {
+                return Payload.BOOKMARK
+            }
+            return Payload.ALL
+        }
+    }
+
+    enum class Payload {
+
+        BOOKMARK, ALL
     }
 
     interface BookmarkClickListener {

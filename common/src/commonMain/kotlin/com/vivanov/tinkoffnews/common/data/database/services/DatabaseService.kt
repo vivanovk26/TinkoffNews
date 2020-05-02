@@ -7,7 +7,7 @@ import com.vivanov.tinkoffnews.common.domain.model.Article
  */
 internal interface DatabaseService {
 
-    suspend fun getAllArticleIds(): List<Long>
+    suspend fun getAllArticleIds(): Set<Long>
 
     suspend fun getAllArticles(): List<Article>
 

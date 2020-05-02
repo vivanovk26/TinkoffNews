@@ -14,14 +14,15 @@ internal class ApiServiceImpl(
     private val apiMapper: ApiMapper
 ) : ApiService {
 
-    override suspend fun getArticles(): List<Article> {
+    override suspend fun getArticles(articleDbIds: Set<Long>): List<Article> {
         delay(2000L)
         return apiMapper.mapArticleResponse(
-            httpClient.get {
+            articlesResponse = httpClient.get {
                 url {
                     encodedPath = "news"
                 }
-            }
+            },
+            articleDbIds = articleDbIds
         )
     }
 }
