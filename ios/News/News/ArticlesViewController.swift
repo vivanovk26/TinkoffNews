@@ -34,7 +34,7 @@ class ArticlesViewController: UIViewController, UITableViewDataSource, ActionLis
     }
     
     func onNextAction(action: Action) {
-        guard let actionItems = (action as? ListAction<Article>)?.items as? [Article] else { return }
+        guard let actionItems = (action as? ListSearchAction)?.items as? [Article] else { return }
         items.append(contentsOf: actionItems)
         articlesTableView.reloadData()
     }
